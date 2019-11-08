@@ -1,9 +1,9 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
  
-var Test = require('./Test');
+var Game = require('./Game');
  
 ReactDOM.render(
-  <Test/>,
+  <Game/>,
   document.getElementById('app')
 );

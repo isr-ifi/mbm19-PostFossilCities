@@ -487,7 +487,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":4,"_process":41}],4:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":4,"_process":40}],4:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28232,7 +28232,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":41,"object-assign":2,"prop-types/checkPropTypes":3,"react":10,"scheduler":35,"scheduler/tracing":36}],6:[function(require,module,exports){
+},{"_process":40,"object-assign":2,"prop-types/checkPropTypes":3,"react":10,"scheduler":35,"scheduler/tracing":36}],6:[function(require,module,exports){
 /** @license React v16.11.0
  * react-dom.production.min.js
  *
@@ -28566,7 +28566,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":5,"./cjs/react-dom.production.min.js":6,"_process":41}],8:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":5,"./cjs/react-dom.production.min.js":6,"_process":40}],8:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react.development.js
@@ -30888,7 +30888,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":41,"object-assign":2,"prop-types/checkPropTypes":3}],9:[function(require,module,exports){
+},{"_process":40,"object-assign":2,"prop-types/checkPropTypes":3}],9:[function(require,module,exports){
 /** @license React v16.11.0
  * react.production.min.js
  *
@@ -30926,7 +30926,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":8,"./cjs/react.production.min.js":9,"_process":41}],11:[function(require,module,exports){
+},{"./cjs/react.development.js":8,"./cjs/react.production.min.js":9,"_process":40}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33072,7 +33072,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 }
 
 }).call(this,require('_process'))
-},{"_process":41}],32:[function(require,module,exports){
+},{"_process":40}],32:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler-tracing.production.min.js
  *
@@ -34113,7 +34113,7 @@ exports.unstable_Profiling = unstable_Profiling;
 }
 
 }).call(this,require('_process'))
-},{"_process":41}],34:[function(require,module,exports){
+},{"_process":40}],34:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler.production.min.js
  *
@@ -34148,7 +34148,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":33,"./cjs/scheduler.production.min.js":34,"_process":41}],36:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":33,"./cjs/scheduler.production.min.js":34,"_process":40}],36:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -34159,73 +34159,69 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":31,"./cjs/scheduler-tracing.production.min.js":32,"_process":41}],37:[function(require,module,exports){
-var React = require('react');
+},{"./cjs/scheduler-tracing.development.js":31,"./cjs/scheduler-tracing.production.min.js":32,"_process":40}],37:[function(require,module,exports){
+const React = require('react');
+const Reflux = require('reflux');
+const TokenInput = require('./TokenInput');
 
-var TestMessage = require('./TestMessage');
-
-class Test extends React.Component {
+class Game extends Reflux.Component {
     render() {
-        return React.createElement(TestMessage, null);
+        if (!document.cookie) {
+            return React.createElement(TokenInput, null);
+        } else {
+            return React.createElement(
+                'h1',
+                null,
+                document.cookie
+            );
+        }
     }
 }
 
-module.exports = Test;
+module.exports = Game;
 
-},{"./TestMessage":38,"react":10}],38:[function(require,module,exports){
-const React = require('react');
-const Reflux = require('reflux');
-const Utils = require('./Utils');
+},{"./TokenInput":38,"react":10,"reflux":28}],38:[function(require,module,exports){
+var React = require('react');
+var Reflux = require('reflux');
+class TokenInput extends Reflux.Component {
 
-class TestMessageStore extends Reflux.Store {
-  constructor() {
-    super();
-    this.state = { value: 'Hello From Local' };
-    Utils.fetchData("/method/myMethodName").then(result => this.setState({ value: result.value }));
-  }
+    constructor(props) {
+        super(props);
+        this.state = { token: "Enter a Token" };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({ token: event.target.value });
+    }
+
+    handleSubmit(event) {
+        document.cookie = "token=" + this.state.token;
+    }
+
+    render() {
+        return React.createElement(
+            'form',
+            { onSubmit: this.handleSubmit },
+            React.createElement('input', { type: 'text', value: this.state.token, onChange: this.handleChange }),
+            React.createElement('input', { type: 'submit', value: 'Submit' })
+        );
+    }
 }
 
-class TestMessage extends Reflux.Component {
+module.exports = TokenInput;
 
-  constructor(props) {
-    super(props);
-    this.store = TestMessageStore;
-  }
-
-  render() {
-    return React.createElement(
-      'div',
-      null,
-      'Hall\xF6le another Test: ',
-      this.state.value
-    );
-  }
-}
-
-module.exports = TestMessage;
-
-},{"./Utils":39,"react":10,"reflux":28}],39:[function(require,module,exports){
-function fetchData(path, methodArguments) {
-    const adress = "http://" + window.location.host + path;
-    return fetch(adress, methodArguments).then(response => {
-        return response.json();
-    });
-}
-
-const Utils = {};
-Utils.fetchData = fetchData;
-
-module.exports = Utils;
-
-},{}],40:[function(require,module,exports){
+},{"react":10,"reflux":28}],39:[function(require,module,exports){
 var ReactDOM = require('react-dom');
 var React = require('react');
 
-var Test = require('./Test');
+var Game = require('./Game');
 
-ReactDOM.render(React.createElement(Test, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(Game, null), document.getElementById('app'));
 
-},{"./Test":37,"react":10,"react-dom":7}],41:[function(require,module,exports){
+},{"./Game":37,"react":10,"react-dom":7}],40:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -34411,4 +34407,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[40]);
+},{}]},{},[39]);
