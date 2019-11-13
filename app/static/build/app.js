@@ -366,7 +366,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":53}],3:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":55}],3:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -563,7 +563,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":53}],9:[function(require,module,exports){
+},{"_process":55}],9:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -749,7 +749,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":53}],14:[function(require,module,exports){
+},{"_process":55}],14:[function(require,module,exports){
 'use strict';
 
 /**
@@ -926,7 +926,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":53}],18:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":55}],18:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -1124,7 +1124,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":20,"_process":53}],20:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":20,"_process":55}],20:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -16500,7 +16500,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":53,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
+},{"_process":55,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
 /** @license React v16.1.0
  * react-dom.production.min.js
  *
@@ -16771,7 +16771,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":53}],24:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":55}],24:[function(require,module,exports){
 (function (process){
 /** @license React v16.1.0
  * react.development.js
@@ -18118,7 +18118,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":53,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
+},{"_process":55,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
 /** @license React v16.1.0
  * react.production.min.js
  *
@@ -18153,7 +18153,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":53}],27:[function(require,module,exports){
+},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":55}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19892,11 +19892,15 @@ function fetchData(path, methodArguments) {
 }
 
 function fetchGameSetup() {
-    return fetchData('/setup/getSetup', { token: getCookie('token') });
+    return fetchData('/setup/getSetup', { token: getCookie('token') }).then(res => {
+        if (!res.valid) {
+            SessionStoreActions.invalidToken(res.token);
+        }
+        return res;
+    });
 }
 
 function checkToken(token) {
-    console.log(token);
     return fetchData('/checkToken', { token: token || getCookie('token') }).then(res => {
         if (res.valid) {
             SessionStoreActions.validToken(res.token);
@@ -19939,8 +19943,12 @@ module.exports = Actions;
 const React = require('react');
 const Reflux = require('reflux');
 const TokenInput = require('./TokenInput');
+const GameGrid = require('./GameGrid');
 const SessionStore = require('../stores/SessionStore');
 
+/**
+ * Root Component, renders either token input or display elements
+ */
 class Game extends Reflux.Component {
     constructor(props) {
         super(props);
@@ -19956,11 +19964,7 @@ class Game extends Reflux.Component {
                 'loading'
             );
         } else if (this.state.valid && !this.state.loading) {
-            return React.createElement(
-                'h1',
-                null,
-                this.state.token
-            );
+            return React.createElement(GameGrid, null);
         } else {
             return React.createElement(TokenInput, null);
         }
@@ -19969,11 +19973,58 @@ class Game extends Reflux.Component {
 
 module.exports = Game;
 
-},{"../stores/SessionStore":52,"./TokenInput":50,"react":26,"reflux":44}],50:[function(require,module,exports){
+},{"../stores/SessionStore":53,"./GameGrid":50,"./TokenInput":51,"react":26,"reflux":44}],50:[function(require,module,exports){
+const React = require('react');
+const Reflux = require('reflux');
+const TokenInput = require('./TokenInput');
+const SetupStore = require('../stores/SetupStore');
+
+/**
+ * Root Component, renders either token input or display elements
+ */
+class GameGrid extends Reflux.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.store = SetupStore;
+    }
+
+    render() {
+        if (this.state.loading) {
+            return React.createElement(
+                'p',
+                null,
+                'loading'
+            );
+        } else {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    'Game Config'
+                ),
+                React.createElement(
+                    'p',
+                    null,
+                    JSON.stringify(this.state)
+                )
+            );
+        }
+    }
+}
+
+module.exports = GameGrid;
+
+},{"../stores/SetupStore":54,"./TokenInput":51,"react":26,"reflux":44}],51:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const SessionStoreActions = require('../actions/SessionStoreActions');
 
+/**
+ * Component for Entering token, will be fullscreen
+ */
 class TokenInput extends Reflux.Component {
 
     constructor(props) {
@@ -20005,7 +20056,7 @@ class TokenInput extends Reflux.Component {
 
 module.exports = TokenInput;
 
-},{"../actions/SessionStoreActions":48,"react":26,"reflux":44}],51:[function(require,module,exports){
+},{"../actions/SessionStoreActions":48,"react":26,"reflux":44}],52:[function(require,module,exports){
 var ReactDOM = require('react-dom');
 var React = require('react');
 
@@ -20013,11 +20064,14 @@ var Game = require('./components/Game');
 
 ReactDOM.render(React.createElement(Game, null), document.getElementById('app'));
 
-},{"./components/Game":49,"react":26,"react-dom":23}],52:[function(require,module,exports){
+},{"./components/Game":49,"react":26,"react-dom":23}],53:[function(require,module,exports){
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 const SessionStoreActions = require('../actions/SessionStoreActions');
 
+/**
+ * Stores validity of the token and checks it
+ */
 class SessionStore extends Reflux.Store {
     constructor() {
         super();
@@ -20049,7 +20103,28 @@ class SessionStore extends Reflux.Store {
 
 module.exports = SessionStore;
 
-},{"../Utils":47,"../actions/SessionStoreActions":48,"reflux":44}],53:[function(require,module,exports){
+},{"../Utils":47,"../actions/SessionStoreActions":48,"reflux":44}],54:[function(require,module,exports){
+const Reflux = require('reflux');
+const Utils = require('../Utils');
+
+/**
+ * Stores validity of the token and checks it
+ */
+class SetupStore extends Reflux.Store {
+    constructor() {
+        super();
+        this.state = { loading: true };
+        Utils.fetchGameSetup().then(res => {
+            var state = res;
+            state.loading = false;
+            this.setState(state);
+        });
+    }
+}
+
+module.exports = SetupStore;
+
+},{"../Utils":47,"reflux":44}],55:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -20235,4 +20310,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[51]);
+},{}]},{},[52]);

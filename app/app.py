@@ -22,7 +22,6 @@ def index():
 @app.route('/checkToken')
 def checkToken():
     token = request.args.get('token')
-    app.logger.info(token)
     return jsonify({
         'valid': True,
         'token': token,

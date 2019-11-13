@@ -1,29 +1,31 @@
 const React = require('react');
 const Reflux = require('reflux');
 const TokenInput = require('./TokenInput');
-const GameGrid = require('./GameGrid');
-const SessionStore = require('../stores/SessionStore');
+const SetupStore = require('../stores/SetupStore');
 
 /**
  * Root Component, renders either token input or display elements
  */
-class Game extends Reflux.Component {
+class GameGrid extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.store = SessionStore;
+        this.store = SetupStore;
     }
 
     render() {
         if (this.state.loading) {
             return <p>loading</p>
-        } else if (this.state.valid && !this.state.loading) {
-            return <GameGrid/>
         } else {
-            return <TokenInput/>
+            return ( 
+                <div>
+                    <h1>Game Config</h1>
+                    <p>{JSON.stringify(this.state)}</p>
+                </div>
+            );
         }
     }
 }
 
 
-module.exports = Game;
+module.exports = GameGrid;

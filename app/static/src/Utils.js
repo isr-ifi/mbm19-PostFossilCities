@@ -15,11 +15,15 @@ function fetchData(path, methodArguments) {
 }
 
 function fetchGameSetup() {
-    return fetchData('/setup/getSetup', { token: getCookie('token') })
+    return fetchData('/setup/getSetup', { token: getCookie('token') }).then(res => {
+        if (!res.valid) {
+            SessionStoreActions.invalidToken(res.token);
+        }
+        return res;
+    })
 }
 
 function checkToken(token) {
-    console.log(token);
     return fetchData('/checkToken', { token: token || getCookie('token')}).then(res => {
         if (res.valid) {
             SessionStoreActions.validToken(res.token);
