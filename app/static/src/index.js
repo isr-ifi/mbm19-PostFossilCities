@@ -1,7 +1,7 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
  
-var Game = require('./Game');
+var Game = require('./components/Game');
  
 ReactDOM.render(
   <Game/>,

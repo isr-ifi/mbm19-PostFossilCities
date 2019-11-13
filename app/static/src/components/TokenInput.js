@@ -1,5 +1,10 @@
-var React = require('react');
-var Reflux = require('reflux');
+const React = require('react');
+const Reflux = require('reflux');
+const SessionStoreActions = require('../actions/SessionStoreActions');
+
+/**
+ * Component for Entering token, will be fullscreen
+ */
 class TokenInput extends Reflux.Component {
 
     constructor(props) {
@@ -15,7 +20,8 @@ class TokenInput extends Reflux.Component {
     }
 
     handleSubmit(event) {
-        document.cookie = "token=" + this.state.token
+        event.preventDefault();
+        SessionStoreActions.setToken(this.state.token);
     }
 
     render() {
@@ -27,6 +33,5 @@ class TokenInput extends Reflux.Component {
         )
     }
 }
-
  
 module.exports = TokenInput;

@@ -1,4 +1,4 @@
-from flask import Flask, Response, render_template, url_for, redirect, jsonify
+from flask import Flask, Response, render_template, url_for, redirect, jsonify, request
 from game_setup.game_setup import game_setup
 from game_progress.game_progress import game_progress
 
@@ -18,6 +18,16 @@ def helloJs():
 @app.route('/')
 def index():
     return redirect('index.html')
+
+@app.route('/checkToken')
+def checkToken():
+    token = request.args.get('token')
+    app.logger.info(token)
+    return jsonify({
+        'valid': True,
+        'token': token,
+    })
+
 
 @app.route('/method/myMethodName')
 def helloMethod():
