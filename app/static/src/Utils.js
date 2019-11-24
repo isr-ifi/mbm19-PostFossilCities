@@ -14,13 +14,22 @@ function fetchData(path, methodArguments) {
     })
 }
 
-function fetchGameSetup() {
-    return fetchData('/setup/getSetup', { token: getCookie('token') }).then(res => {
+function fetchDataWithToken(path, methodArguments = {}) {
+    methodArguments.token = getCookie('token')
+    return fetchData(path, methodArguments).then(res => {
         if (!res.valid) {
             SessionStoreActions.invalidToken(res.token);
         }
         return res;
-    })
+    });
+}
+
+function fetchGameSetup() {
+    return fetchDataWithToken('/setup/getSetup');
+}
+
+function fetchGameData(name = "test", year = 2035) {
+    return fetchDataWithToken('/progress/getValues/' + name, {year: year})
 }
 
 function checkToken(token) {
@@ -53,5 +62,6 @@ const Utils = {};
 Utils.fetchGameSetup = fetchGameSetup;
 Utils.getCookie = getCookie;
 Utils.checkToken = checkToken;
+Utils.fetchGameData = fetchGameData;
 
 module.exports = Utils;

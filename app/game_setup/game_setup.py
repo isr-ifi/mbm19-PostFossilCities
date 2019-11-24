@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from utils.utils import getElements
 
 game_setup = Blueprint('game_setup', __name__)
 
@@ -9,13 +10,5 @@ def getSetup():
     return jsonify({
         'valid': True,
         'token': token,
-        'elements': [
-            {
-                'name': 'elem1',
-                'sizeX': 1,
-                'sizeY': 1,
-                'positionX': 1,
-                'positiony':1
-            }
-        ]
+        'elements': getElements()
     })

@@ -366,7 +366,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":55}],3:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":58}],3:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -563,7 +563,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":55}],9:[function(require,module,exports){
+},{"_process":58}],9:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -749,7 +749,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":55}],14:[function(require,module,exports){
+},{"_process":58}],14:[function(require,module,exports){
 'use strict';
 
 /**
@@ -926,7 +926,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":55}],18:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":58}],18:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -1124,7 +1124,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":20,"_process":55}],20:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":20,"_process":58}],20:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -16500,7 +16500,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":55,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
+},{"_process":58,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
 /** @license React v16.1.0
  * react-dom.production.min.js
  *
@@ -16771,7 +16771,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":55}],24:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":58}],24:[function(require,module,exports){
 (function (process){
 /** @license React v16.1.0
  * react.development.js
@@ -18118,7 +18118,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":55,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
+},{"_process":58,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
 /** @license React v16.1.0
  * react.production.min.js
  *
@@ -18153,7 +18153,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":55}],27:[function(require,module,exports){
+},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":58}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19891,13 +19891,22 @@ function fetchData(path, methodArguments) {
     });
 }
 
-function fetchGameSetup() {
-    return fetchData('/setup/getSetup', { token: getCookie('token') }).then(res => {
+function fetchDataWithToken(path, methodArguments = {}) {
+    methodArguments.token = getCookie('token');
+    return fetchData(path, methodArguments).then(res => {
         if (!res.valid) {
             SessionStoreActions.invalidToken(res.token);
         }
         return res;
     });
+}
+
+function fetchGameSetup() {
+    return fetchDataWithToken('/setup/getSetup');
+}
+
+function fetchGameData(name = "test", year = 2035) {
+    return fetchDataWithToken('/progress/getValues/' + name, { year: year });
 }
 
 function checkToken(token) {
@@ -19930,16 +19939,23 @@ const Utils = {};
 Utils.fetchGameSetup = fetchGameSetup;
 Utils.getCookie = getCookie;
 Utils.checkToken = checkToken;
+Utils.fetchGameData = fetchGameData;
 
 module.exports = Utils;
 
-},{"./actions/SessionStoreActions":48}],48:[function(require,module,exports){
+},{"./actions/SessionStoreActions":49}],48:[function(require,module,exports){
+const Reflux = require('reflux');
+
+const Actions = Reflux.createActions(['updateState']);
+module.exports = Actions;
+
+},{"reflux":44}],49:[function(require,module,exports){
 const Reflux = require('reflux');
 
 const Actions = Reflux.createActions(['invalidToken', 'validToken', 'setToken']);
 module.exports = Actions;
 
-},{"reflux":44}],49:[function(require,module,exports){
+},{"reflux":44}],50:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const TokenInput = require('./TokenInput');
@@ -19973,11 +19989,11 @@ class Game extends Reflux.Component {
 
 module.exports = Game;
 
-},{"../stores/SessionStore":53,"./GameGrid":50,"./TokenInput":51,"react":26,"reflux":44}],50:[function(require,module,exports){
+},{"../stores/SessionStore":56,"./GameGrid":51,"./TokenInput":53,"react":26,"reflux":44}],51:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
-const TokenInput = require('./TokenInput');
 const SetupStore = require('../stores/SetupStore');
+const GridContainer = require('./GridContainer');
 
 /**
  * Root Component, renders either token input or display elements
@@ -19997,6 +20013,9 @@ class GameGrid extends Reflux.Component {
                 'loading'
             );
         } else {
+            var gridContainer = this.state.elements.map(item => {
+                return React.createElement(GridContainer, { name: item.name, key: item.name });
+            });
             return React.createElement(
                 'div',
                 null,
@@ -20009,7 +20028,8 @@ class GameGrid extends Reflux.Component {
                     'p',
                     null,
                     JSON.stringify(this.state)
-                )
+                ),
+                gridContainer
             );
         }
     }
@@ -20017,7 +20037,56 @@ class GameGrid extends Reflux.Component {
 
 module.exports = GameGrid;
 
-},{"../stores/SetupStore":54,"./TokenInput":51,"react":26,"reflux":44}],51:[function(require,module,exports){
+},{"../stores/SetupStore":57,"./GridContainer":52,"react":26,"reflux":44}],52:[function(require,module,exports){
+const React = require('react');
+const Reflux = require('reflux');
+const Utils = require('../Utils');
+const GameStateStoreFactory = require('../stores/GameStateStoreFactory');
+
+/**
+ * Renders data for one given name
+ */
+class GridContainer extends Reflux.Component {
+    constructor(props) {
+        super(props);
+        const storeObject = GameStateStoreFactory(props.name);
+        this.store = storeObject.store;
+        this.storeActions = storeObject.actions;
+    }
+
+    componentDidMount() {
+        this.storeActions.loadState(2025);
+    }
+
+    render() {
+        if (this.state.loading) {
+            return React.createElement(
+                'p',
+                null,
+                'loading'
+            );
+        } else {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    this.props.name
+                ),
+                React.createElement(
+                    'p',
+                    null,
+                    JSON.stringify(this.state.data)
+                )
+            );
+        }
+    }
+}
+
+module.exports = GridContainer;
+
+},{"../Utils":47,"../stores/GameStateStoreFactory":55,"react":26,"reflux":44}],53:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const SessionStoreActions = require('../actions/SessionStoreActions');
@@ -20056,7 +20125,7 @@ class TokenInput extends Reflux.Component {
 
 module.exports = TokenInput;
 
-},{"../actions/SessionStoreActions":48,"react":26,"reflux":44}],52:[function(require,module,exports){
+},{"../actions/SessionStoreActions":49,"react":26,"reflux":44}],54:[function(require,module,exports){
 var ReactDOM = require('react-dom');
 var React = require('react');
 
@@ -20064,7 +20133,44 @@ var Game = require('./components/Game');
 
 ReactDOM.render(React.createElement(Game, null), document.getElementById('app'));
 
-},{"./components/Game":49,"react":26,"react-dom":23}],53:[function(require,module,exports){
+},{"./components/Game":50,"react":26,"react-dom":23}],55:[function(require,module,exports){
+const Reflux = require('reflux');
+
+const Utils = require('../Utils');
+const GameStateActions = require('../actions/GameStateActions');
+
+var gameStateStoreCache = {};
+
+function GameStateStoreFactory(name) {
+    if (gameStateStoreCache[name]) {
+        return gameStateStoreCache[name];
+    }
+
+    const storeActions = Reflux.createActions(['loadState']);
+
+    class GameStateStore extends Reflux.Store {
+        constructor() {
+            super();
+            this.listenToMany(GameStateActions);
+            this.listenToMany(storeActions);
+            this.state = { loading: true };
+        }
+
+        onLoadState(year) {
+            Utils.fetchGameData(name, year).then(res => {
+                res.loading = false;
+                this.setState(res);
+            });
+        }
+    }
+
+    gameStateStoreCache[name] = { actions: storeActions, store: GameStateStore };
+    return gameStateStoreCache[name];
+}
+
+module.exports = GameStateStoreFactory;
+
+},{"../Utils":47,"../actions/GameStateActions":48,"reflux":44}],56:[function(require,module,exports){
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 const SessionStoreActions = require('../actions/SessionStoreActions');
@@ -20103,7 +20209,7 @@ class SessionStore extends Reflux.Store {
 
 module.exports = SessionStore;
 
-},{"../Utils":47,"../actions/SessionStoreActions":48,"reflux":44}],54:[function(require,module,exports){
+},{"../Utils":47,"../actions/SessionStoreActions":49,"reflux":44}],57:[function(require,module,exports){
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 
@@ -20124,7 +20230,7 @@ class SetupStore extends Reflux.Store {
 
 module.exports = SetupStore;
 
-},{"../Utils":47,"reflux":44}],55:[function(require,module,exports){
+},{"../Utils":47,"reflux":44}],58:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -20310,4 +20416,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[52]);
+},{}]},{},[54]);

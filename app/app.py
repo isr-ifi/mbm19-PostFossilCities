@@ -4,6 +4,7 @@ from game_progress.game_progress import game_progress
 
 app = Flask(__name__, static_url_path='')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['JSON_SORT_KEYS'] = False
 app.register_blueprint(game_setup, url_prefix='/setup')
 app.register_blueprint(game_progress, url_prefix='/progress')
 
