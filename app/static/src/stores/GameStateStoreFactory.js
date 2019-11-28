@@ -26,6 +26,10 @@ function GameStateStoreFactory(name) {
                 this.setState(res);
             });
         }
+
+        onUpdateState(year) {
+            this.onLoadState(year);
+        }
     }
 
     gameStateStoreCache[name] = {actions: storeActions, store: GameStateStore};

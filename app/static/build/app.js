@@ -366,7 +366,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":58}],3:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":59}],3:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -563,7 +563,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":58}],9:[function(require,module,exports){
+},{"_process":59}],9:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -749,7 +749,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":58}],14:[function(require,module,exports){
+},{"_process":59}],14:[function(require,module,exports){
 'use strict';
 
 /**
@@ -926,7 +926,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":7,"_process":58}],18:[function(require,module,exports){
+},{"./emptyFunction":7,"_process":59}],18:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -1124,7 +1124,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":20,"_process":58}],20:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":20,"_process":59}],20:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -16500,7 +16500,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":58,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
+},{"_process":59,"fbjs/lib/EventListener":2,"fbjs/lib/ExecutionEnvironment":3,"fbjs/lib/camelizeStyleName":5,"fbjs/lib/containsNode":6,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/focusNode":9,"fbjs/lib/getActiveElement":10,"fbjs/lib/hyphenateStyleName":12,"fbjs/lib/invariant":13,"fbjs/lib/shallowEqual":16,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19,"react":26}],22:[function(require,module,exports){
 /** @license React v16.1.0
  * react-dom.production.min.js
  *
@@ -16771,7 +16771,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":58}],24:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":21,"./cjs/react-dom.production.min.js":22,"_process":59}],24:[function(require,module,exports){
 (function (process){
 /** @license React v16.1.0
  * react.development.js
@@ -18118,7 +18118,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":58,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
+},{"_process":59,"fbjs/lib/emptyFunction":7,"fbjs/lib/emptyObject":8,"fbjs/lib/invariant":13,"fbjs/lib/warning":17,"object-assign":18,"prop-types/checkPropTypes":19}],25:[function(require,module,exports){
 /** @license React v16.1.0
  * react.production.min.js
  *
@@ -18153,7 +18153,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":58}],27:[function(require,module,exports){
+},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":59}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19994,6 +19994,7 @@ const React = require('react');
 const Reflux = require('reflux');
 const SetupStore = require('../stores/SetupStore');
 const GridContainer = require('./GridContainer');
+const WebSocketHandler = require('../stores/WebSocketHandler');
 
 /**
  * Root Component, renders either token input or display elements
@@ -20003,6 +20004,7 @@ class GameGrid extends Reflux.Component {
         super(props);
         this.state = {};
         this.store = SetupStore;
+        WebSocketHandler.start();
     }
 
     render() {
@@ -20013,7 +20015,7 @@ class GameGrid extends Reflux.Component {
                 'loading'
             );
         } else {
-            var gridContainer = this.state.elements.map(item => {
+            var gridContainer = this.state.elements.components.map(item => {
                 return React.createElement(GridContainer, { name: item.name, key: item.name });
             });
             return React.createElement(
@@ -20037,7 +20039,7 @@ class GameGrid extends Reflux.Component {
 
 module.exports = GameGrid;
 
-},{"../stores/SetupStore":57,"./GridContainer":52,"react":26,"reflux":44}],52:[function(require,module,exports){
+},{"../stores/SetupStore":57,"../stores/WebSocketHandler":58,"./GridContainer":52,"react":26,"reflux":44}],52:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const Utils = require('../Utils');
@@ -20055,7 +20057,7 @@ class GridContainer extends Reflux.Component {
     }
 
     componentDidMount() {
-        this.storeActions.loadState(2025);
+        this.storeActions.loadState(2020);
     }
 
     render() {
@@ -20162,6 +20164,10 @@ function GameStateStoreFactory(name) {
                 this.setState(res);
             });
         }
+
+        onUpdateState(year) {
+            this.onLoadState(year);
+        }
     }
 
     gameStateStoreCache[name] = { actions: storeActions, store: GameStateStore };
@@ -20231,6 +20237,22 @@ class SetupStore extends Reflux.Store {
 module.exports = SetupStore;
 
 },{"../Utils":47,"reflux":44}],58:[function(require,module,exports){
+const GameStateAcions = require('../actions/GameStateActions');
+const updateInterval = 5000;
+
+let currentYear = 2020;
+
+let increase = () => {
+    GameStateAcions.updateState(currentYear);
+    currentYear = currentYear + 1;
+    if (currentYear < 2050) {
+        setTimeout(increase, updateInterval);
+    }
+};
+
+module.exports = { start: increase };
+
+},{"../actions/GameStateActions":48}],59:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 

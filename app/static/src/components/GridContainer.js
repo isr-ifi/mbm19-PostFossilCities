@@ -15,7 +15,7 @@ class GridContainer extends Reflux.Component {
     }
 
     componentDidMount() {
-        this.storeActions.loadState(2025);
+        this.storeActions.loadState(2020);
     }
 
     render() {

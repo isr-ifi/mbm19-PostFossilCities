@@ -13,24 +13,49 @@ def getData(kind, year):
     return values
 
 def getElements():
-    return [
-        {
-            'name': 'elem1',
-            'sizeX': 1,
-            'sizeY': 1,
-            'positionX': 0,
-            'positionY': 0,
-        }, {
-            'name': 'elem2',
-            'sizeX': 2,
-            'sizeY': 1,
-            'positionX': 1,
-            'positionY': 0,
-        }, {
-            'name': 'elem3',
-            'sizeX': 3,
-            'sizeY': 2,
-            'positionX': 0,
-            'positionY': 1,
-        }
-    ]
+    return {
+        'components': [
+            {
+                'name': 'PieChart',
+                'parameter': [
+                    {
+                        'parameter': 'breakpoint',
+                        'type': 'integer',
+                        'value': 200
+                    }, {
+                        'parameter': 'width',
+                        'type': 'integer',
+                        'value': 500
+                    }, {
+                        'parameter': 'position',
+                        'type': 'string',
+                        'value': 'bottom'
+                    }, {
+                        'parameter': 'labels',
+                        'type': 'dynamic',
+                        'value': 'Infrastructure'
+                    }
+                ],
+                'position': {
+                    'width': 6,
+                    'height': 12,
+                    'x': 0,
+                    'y': 0
+                },
+                'enabled': True,
+                'toolbox': False
+            }, {
+                'name': 'DonutChart',
+                'parameter': [],
+                'position': {
+                    'width': 4,
+                    'height': 12,
+                    'x': 7,
+                    'y': 0
+                },
+                'enabled': True,
+                'toolbox': False
+            }
+        ],
+        'decisionCards': [],
+    }
