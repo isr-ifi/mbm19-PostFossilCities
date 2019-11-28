@@ -16,6 +16,10 @@ def hello():
 def helloJs():
     return app.send_static_file('build/app.js')
 
+@app.route("/build/main.a1ece92d.chunk.css")
+def helloCSS():
+    return app.send_static_file('build/main.a1ece92d.chunk.css')
+
 @app.route('/')
 def index():
     return redirect('index.html')

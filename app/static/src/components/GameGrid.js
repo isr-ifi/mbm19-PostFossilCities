@@ -3,6 +3,7 @@ const Reflux = require('reflux');
 const SetupStore = require('../stores/SetupStore');
 const GridContainer = require('./GridContainer')
 const WebSocketHandler = require('../stores/WebSocketHandler');
+const GenericTimeseries = require('./GenericTimeSeries/GenericTimeseries')
 
 /**
  * Root Component, renders either token input or display elements
@@ -27,6 +28,7 @@ class GameGrid extends Reflux.Component {
                     <h1>Game Config</h1>
                     <p>{JSON.stringify(this.state)}</p>
                     {gridContainer}
+                    <GenericTimeseries/>
                 </div>
             );
         }

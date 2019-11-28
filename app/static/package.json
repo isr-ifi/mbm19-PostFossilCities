@@ -4,7 +4,9 @@
         "babel-preset-react": "^6.24.1",
         "react": "16.1.0",
         "react-dom": "16.1.0",
-        "reflux": "^6.4.1"
+        "reflux": "^6.4.1",
+        "chart.js": "^2.9.3",
+        "react-chartjs-2": "^2.8.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
