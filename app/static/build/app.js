@@ -16519,7 +16519,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":8,"_process":196}],4:[function(require,module,exports){
+},{"./emptyFunction":8,"_process":195}],4:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -16716,7 +16716,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":196}],10:[function(require,module,exports){
+},{"_process":195}],10:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -16902,7 +16902,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":196}],15:[function(require,module,exports){
+},{"_process":195}],15:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17079,7 +17079,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":8,"_process":196}],19:[function(require,module,exports){
+},{"./emptyFunction":8,"_process":195}],19:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -25417,7 +25417,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":151,"_process":196}],148:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":151,"_process":195}],148:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -26078,7 +26078,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 }).call(this,require('_process'))
-},{"./checkPropTypes":147,"./lib/ReactPropTypesSecret":151,"_process":196,"object-assign":146,"react-is":158}],150:[function(require,module,exports){
+},{"./checkPropTypes":147,"./lib/ReactPropTypesSecret":151,"_process":195,"object-assign":146,"react-is":158}],150:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26101,7 +26101,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./factoryWithThrowingShims":148,"./factoryWithTypeCheckers":149,"_process":196,"react-is":158}],151:[function(require,module,exports){
+},{"./factoryWithThrowingShims":148,"./factoryWithTypeCheckers":149,"_process":195,"react-is":158}],151:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -26671,7 +26671,7 @@ var Scatter = exports.Scatter = function (_React$Component10) {
 var defaults = exports.defaults = _chart2.default.defaults;
 exports.Chart = _chart2.default;
 }).call(this,require('_process'))
-},{"_process":196,"chart.js":1,"lodash/isEqual":131,"lodash/keyBy":138,"prop-types":150,"react":161}],153:[function(require,module,exports){
+},{"_process":195,"chart.js":1,"lodash/isEqual":131,"lodash/keyBy":138,"prop-types":150,"react":161}],153:[function(require,module,exports){
 (function (process){
 /** @license React v16.1.0
  * react-dom.development.js
@@ -42033,7 +42033,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":196,"fbjs/lib/EventListener":3,"fbjs/lib/ExecutionEnvironment":4,"fbjs/lib/camelizeStyleName":6,"fbjs/lib/containsNode":7,"fbjs/lib/emptyFunction":8,"fbjs/lib/emptyObject":9,"fbjs/lib/focusNode":10,"fbjs/lib/getActiveElement":11,"fbjs/lib/hyphenateStyleName":13,"fbjs/lib/invariant":14,"fbjs/lib/shallowEqual":17,"fbjs/lib/warning":18,"object-assign":146,"prop-types/checkPropTypes":147,"react":161}],154:[function(require,module,exports){
+},{"_process":195,"fbjs/lib/EventListener":3,"fbjs/lib/ExecutionEnvironment":4,"fbjs/lib/camelizeStyleName":6,"fbjs/lib/containsNode":7,"fbjs/lib/emptyFunction":8,"fbjs/lib/emptyObject":9,"fbjs/lib/focusNode":10,"fbjs/lib/getActiveElement":11,"fbjs/lib/hyphenateStyleName":13,"fbjs/lib/invariant":14,"fbjs/lib/shallowEqual":17,"fbjs/lib/warning":18,"object-assign":146,"prop-types/checkPropTypes":147,"react":161}],154:[function(require,module,exports){
 /** @license React v16.1.0
  * react-dom.production.min.js
  *
@@ -42304,7 +42304,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":153,"./cjs/react-dom.production.min.js":154,"_process":196}],156:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":153,"./cjs/react-dom.production.min.js":154,"_process":195}],156:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react-is.development.js
@@ -42544,7 +42544,7 @@ exports.isSuspense = isSuspense;
 }
 
 }).call(this,require('_process'))
-},{"_process":196}],157:[function(require,module,exports){
+},{"_process":195}],157:[function(require,module,exports){
 /** @license React v16.11.0
  * react-is.production.min.js
  *
@@ -42572,7 +42572,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-is.development.js":156,"./cjs/react-is.production.min.js":157,"_process":196}],159:[function(require,module,exports){
+},{"./cjs/react-is.development.js":156,"./cjs/react-is.production.min.js":157,"_process":195}],159:[function(require,module,exports){
 (function (process){
 /** @license React v16.1.0
  * react.development.js
@@ -43919,7 +43919,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":196,"fbjs/lib/emptyFunction":8,"fbjs/lib/emptyObject":9,"fbjs/lib/invariant":14,"fbjs/lib/warning":18,"object-assign":146,"prop-types/checkPropTypes":147}],160:[function(require,module,exports){
+},{"_process":195,"fbjs/lib/emptyFunction":8,"fbjs/lib/emptyObject":9,"fbjs/lib/invariant":14,"fbjs/lib/warning":18,"object-assign":146,"prop-types/checkPropTypes":147}],160:[function(require,module,exports){
 /** @license React v16.1.0
  * react.production.min.js
  *
@@ -43954,7 +43954,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":159,"./cjs/react.production.min.js":160,"_process":196}],162:[function(require,module,exports){
+},{"./cjs/react.development.js":159,"./cjs/react.production.min.js":160,"_process":195}],162:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45790,13 +45790,12 @@ class Game extends Reflux.Component {
 
 module.exports = Game;
 
-},{"../stores/SessionStore":193,"./GameGrid":186,"./TokenInput":190,"react":161,"reflux":179}],186:[function(require,module,exports){
+},{"../stores/SessionStore":192,"./GameGrid":186,"./TokenInput":189,"react":161,"reflux":179}],186:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const SetupStore = require('../stores/SetupStore');
 const GridContainer = require('./GridContainer');
 const WebSocketHandler = require('../stores/WebSocketHandler');
-const GenericTimeseries = require('./GenericTimeSeries/GenericTimeseries');
 
 /**
  * Root Component, renders either token input or display elements
@@ -45807,6 +45806,26 @@ class GameGrid extends Reflux.Component {
         this.state = {};
         this.store = SetupStore;
         WebSocketHandler.start();
+
+        this.calculateGridDimensions = this.calculateGridDimensions.bind(this);
+    }
+
+    calculateGridDimensions() {
+        let maxWidth = 1;
+        let maxHeight = 1;
+        this.state.elements.components.forEach(item => {
+            let x = parseInt(item.position.x);
+            let y = parseInt(item.position.y);
+            let height = parseInt(item.position.height);
+            let width = parseInt(item.position.width);
+            if (width + x > maxWidth) {
+                maxWidth = width + x;
+            }
+            if (height + y > maxHeight) {
+                maxHeight = height + y;
+            }
+        });
+        return { width: maxWidth, height: maxHeight };
     }
 
     render() {
@@ -45816,311 +45835,50 @@ class GameGrid extends Reflux.Component {
                 null,
                 'loading'
             );
-        } else {
-            var gridContainer = this.state.elements.components.map(item => {
-                return React.createElement(GridContainer, { name: item.name, key: item.name });
-            });
-            return React.createElement(
-                'div',
-                null,
-                React.createElement(
-                    'h1',
-                    null,
-                    'Game Config'
-                ),
-                React.createElement(
-                    'p',
-                    null,
-                    JSON.stringify(this.state)
-                ),
-                gridContainer,
-                React.createElement(GenericTimeseries, null)
-            );
         }
-    }
-}
-
-module.exports = GameGrid;
-
-},{"../stores/SetupStore":194,"../stores/WebSocketHandler":195,"./GenericTimeSeries/GenericTimeseries":187,"./GridContainer":189,"react":161,"reflux":179}],187:[function(require,module,exports){
-const React = require('react');
-
-const LineChartWithForecast = require('./LineChartWithForecast');
-
-class GenericTimeseries extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            data: {
-                labels: ['2017-08-01', '2017-08-02', '2017-08-03', '2017-08-04', '2017-08-05', '2017-08-06', '2017-08-07', '2017-08-08', '2017-08-09', '2017-08-10'],
-                datasets: [{
-                    label: "A",
-                    backgroundColor: "rgba(255, 0, 255, 0.75)",
-                    data: [10, 20, 50, 60, 80,,,,,],
-                    fill: false
-                }, {
-                    label: "A Forecast",
-                    backgroundColor: "rgba(255, 0, 255, 0.75)",
-                    data: [,,,, 80, 100, 120, 150, 180, 210],
-                    borderDash: [10, 5],
-                    fill: false
-                }, {
-                    label: "B",
-                    backgroundColor: "rgba(0, 255, 0, 0.75)",
-                    data: [123, 120, 105, 97, 85,,,,,],
-                    fill: false
-                }, {
-                    label: "B Forecast",
-                    backgroundColor: "rgba(0, 255, 0, 0.75)",
-                    data: [,,,, 85, 70, 55, 30, 25, 20],
-                    borderDash: [10, 5],
-                    fill: false
-                }]
-            }
-        };
-
-        //console.log(this.state.data)
-    }
-
-    componentDidMount() {}
-
-    render() {
+        var gridContainer = this.state.elements.components.map(item => {
+            return React.createElement(GridContainer, { name: item.name, key: item.name, position: item.position });
+        });
+        let gridDimensions = this.calculateGridDimensions();
         return React.createElement(
             'div',
-            { className: "card" },
+            null,
             React.createElement(
                 'div',
-                { className: "card-header" },
-                React.createElement(
-                    'h4',
-                    null,
-                    'Generic Timeseries'
-                )
-            ),
-            React.createElement(
-                'div',
-                { className: "row card-content" },
-                React.createElement(LineChartWithForecast, null)
+                { style: { display: 'grid', gridGap: '10px', gridTemplateColumns: 'repeat(' + gridDimensions.width + ', 1fr)', gridTemplateRows: 'repeat(' + gridDimensions.height + ', 1fr)', height: '100vh', width: '100vw' } },
+                gridContainer
             )
         );
     }
 
 }
 
-module.exports = GenericTimeseries;
+module.exports = GameGrid;
 
-},{"./LineChartWithForecast":188,"react":161}],188:[function(require,module,exports){
+},{"../stores/SetupStore":193,"../stores/WebSocketHandler":194,"./GridContainer":188,"react":161,"reflux":179}],187:[function(require,module,exports){
 const React = require('react');
-const Component = React.Component;
-
 const ReactChartJS2 = require('react-chartjs-2');
-const Chart = ReactChartJS2.Chart;
 const Line = ReactChartJS2.Line;
 
-var data = {
-    today: '',
-    labels: [],
-    datasets: {}
-};
+class LineGraph extends React.Component {
 
-var ts = [];
-
-var position = 1;
-
-function generateTimeSeries(number, length) {
-    for (let i = 0; i < number; i++) {
-        const s = [];
-
-        var q = 0;
-
-        for (let j = 0; j < length; j++) {
-            q = Math.round(q + 5 * Math.random() + 10 / Math.random());
-            s.push(q);
-        }
-        ts.push(s);
-        ts.push(s);
-    }
-}
-
-function getLabels() {
-    let labels = [];
-
-    for (let i = 2020; i <= 2100; i++) {
-        labels.push(i + '');
-    }
-    return labels;
-}
-
-function generateData(setNumber) {
-    let data = [];
-
-    Array.prototype.push.apply(data, ts[setNumber].slice(0, position));
-
-    return data;
-}
-
-function generateForecastData(setNumber) {
-    let data = [];
-
-    for (let i = 0; i < position - 1; i++) {
-        data.push(null);
-    }
-
-    Array.prototype.push.apply(data, ts[setNumber].slice(position - 1));
-
-    return data;
-}
-
-function generateDataSets(seriesLabels, length) {
-    let datasets = [];
-
-    for (let i = 0; i < seriesLabels.length; i++) {
-
-        let set = {
-            label: seriesLabels[i],
-            data: generateData(i),
-            fill: false
-        };
-
-        datasets.push(set);
-    }
-
-    return datasets;
-}
-
-function generateForecastDataSets(seriesLabels, start, max, length) {
-    let datasets = [];
-
-    for (let i = 0; i < seriesLabels.length; i++) {
-
-        let set = {
-            label: seriesLabels[i],
-            data: generateForecastData(i * 2),
-            borderDash: [5, 5],
-            fill: false
-        };
-
-        datasets.push(set);
-    }
-
-    return datasets;
-}
-
-function getData() {
-
-    generateTimeSeries(2, 80);
-
-    var labels = getLabels();
-
-    var today = labels[position - 1];
-    console.log(today);
-
-    var seriesLabels = ["A", "B"];
-    var seriesForecastLabels = ["A Forecast", "B Forecast"];
-
-    var datasets = generateDataSets(seriesLabels);
-    var forecastDatasets = generateForecastDataSets(seriesForecastLabels, 0, labels.length);
-
-    var d = [];
-
-    d.push(datasets[0]);
-    d.push(forecastDatasets[0]);
-    d.push(datasets[1]);
-    d.push(forecastDatasets[1]);
-
-    data.today = today;
-    data.labels = labels;
-    data.datasets = d;
-
-    position = position + 1;
-
-    return data;
-}
-
-function updateDataSets() {
-
-    let length = data.datasets.length;
-
-    for (let i = 0; i < length; i = i + 2) {
-        data.datasets[i].data = generateData(i);
-    }
-
-    for (let i = 1; i < length; i = i + 2) {
-
-        data.datasets[i].data = generateForecastData(i);
-    }
-
-    position = position + 1;
-
-    return data.datasets;
-}
-
-function updateData() {
-    data.datasets = updateDataSets();
-    data.today = parseInt(data.today) + 1 + "";
-
-    return data;
-}
-
-/**
- *
- * Line Chart that displays timeseries
- *
- */
-class LineChartWithForecast extends Component {
-
-    /**
-     *
-     * @param props
-     */
     constructor(props) {
         super(props);
-        this.lines = [1];
-        this.state = {
-            test: this.props.data,
-            data: getData()
-        };
-
-        this.annos = this.annos.bind(this);
-        this.options = this.options.bind(this);
-        this.getChartData = this.getChartData.bind(this);
-        this.changeHandler = this.changeHandler.bind(this);
+        this.prepareData = this.prepareData.bind(this);
+        this.prepareOptions = this.prepareOptions.bind(this);
+        //console.log(this.state.data)
     }
 
-    componentDidMount() {
-        // window.setInterval(() => {
+    componentDidMount() {}
 
-        //     this.setState({
-        //         data: updateData()
-        //     });
-
-        //     console.log(this.state.data);
-
-
-        //     let lineChart = this.reference.chartInstance;
-
-        //     lineChart.update()
-
-        // }, 1000)
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        let lineChart = this.reference.chartInstance;
-
-        lineChart.update();
-    }
-
-    annos(today) {
-        var as = [];
-
-        var a = {
+    prepareOptions() {
+        return {
             type: 'line',
             id: 'vline',
             mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: today,
+            scaleID: 'y-axis-1',
+            maintainAspectRatio: false,
+            value: 2020,
             borderColor: 'black',
             borderWidth: 2,
             label: {
@@ -46134,107 +45892,67 @@ class LineChartWithForecast extends Component {
                 fontSize: 6
             }
         };
-
-        as.push(a);
-
-        return as;
     }
 
-    options() {
-
-        const options = {
-            annotation: {
-                drawTime: 'afterDatasetsDraw',
-                annotations: this.annos(this.state.data.today)
-
-            },
-            animation: {
-                duration: 0
-            },
-            legend: {
-                display: true
-            },
-
-            elements: {
-                point: {
-                    radius: 0
-                }
-            },
-
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        autoSkip: true,
-                        minRotation: 90
-                    }
-                }]
-            },
-
-            responsive: true
-        };
-
-        return options;
-    }
-
-    setGradientColor(canvas, color) {
-        const ctx = canvas.getContext('2d');
-        const gradient = ctx.createLinearGradient(0, 0, 600, 550);
-        gradient.addColorStop(0, color);
-        gradient.addColorStop(0.95, "rgba(133, 122, 144, 0.5)");
-
-        return gradient;
-    }
-
-    getChartData(canvas) {
-
-        const data = this.state.data;
-
-        if (data.datasets) {
-            let colors = ["rgba(255, 0, 255, 0.75)", "rgba(255, 0, 255, 0.75)", "rgba(100, 222, 255, 0.75)", "rgba(100, 222, 255, 0.75)"];
-            data.datasets.forEach((set, i) => {
-                set.backgroundColor = this.setGradientColor(canvas, colors[i]);
-                set.borderColor = this.setGradientColor(canvas, colors[i]);
-                set.borderWidth = 2;
-            });
+    prepareData() {
+        let { data } = this.props;
+        let result = { datasets: [], labels: [] };
+        result.labels = Object.keys(data[Object.keys(data)[0]]);
+        let lastLabel = parseInt(result.labels[result.labels.length - 1]);
+        for (let i = lastLabel + 1; i <= 2100 && i <= lastLabel + 10; i++) {
+            result.labels.push(i);
         }
-
-        console.log(data);
-
-        return data;
-    }
-
-    changeHandler(value) {
-        this.chart.update();
+        Object.keys(data).forEach(key => {
+            let dataObject = data[key];
+            let dataEntries = Object.keys(dataObject).map(key => dataObject[key]);
+            result.datasets.push({
+                label: key,
+                data: dataEntries,
+                backgroundColor: "rgba(0, 255, 0, 0.75)",
+                borderDash: [10, 5],
+                borderColor: "rgba(255, 0, 255, 0.75)",
+                backgroundColor: "rgba(255, 0, 255, 0.75)",
+                fill: false
+            });
+        });
+        return result;
     }
 
     render() {
         return React.createElement(
             'div',
-            { style: { position: "relative", width: 600, height: 550 } },
-            React.createElement(Line, {
-                options: this.options(),
-                data: this.getChartData,
-                ref: reference => this.reference = reference,
-                redraw: true
-            })
+            { className: "card", style: { minWidth: '100%', minHeight: '100%' } },
+            React.createElement(
+                'div',
+                { className: "card-header" },
+                React.createElement(
+                    'h4',
+                    null,
+                    this.props.title
+                )
+            ),
+            React.createElement(
+                'div',
+                { className: "row card-content", style: { flexGrow: 1 } },
+                React.createElement(Line, {
+                    data: this.prepareData(),
+                    options: this.prepareOptions(),
+                    redraw: true
+                })
+            )
         );
     }
 
 }
 
-module.exports = LineChartWithForecast;
+module.exports = LineGraph;
 
-},{"react":161,"react-chartjs-2":152}],189:[function(require,module,exports){
+},{"react":161,"react-chartjs-2":152}],188:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 const GameStateStoreFactory = require('../stores/GameStateStoreFactory');
+const LineGraph = require('./GenericTimeSeries/LineGraph');
 
 /**
  * Renders data for one given name
@@ -46245,10 +45963,22 @@ class GridContainer extends Reflux.Component {
         const storeObject = GameStateStoreFactory(props.name);
         this.store = storeObject.store;
         this.storeActions = storeObject.actions;
+
+        this.getGridStyling = this.getGridStyling.bind(this);
     }
 
     componentDidMount() {
         this.storeActions.loadState(2020);
+    }
+
+    getGridStyling() {
+        let position = this.props.position;
+        let result = {};
+        result.gridColumnStart = parseInt(position.x) + 1;
+        result.gridColumnEnd = result.gridColumnStart + parseInt(position.width);
+        result.gridRowStart = parseInt(position.y) + 1;
+        result.gridRowEnd = result.gridRowStart + parseInt(position.height);
+        return result;
     }
 
     render() {
@@ -46259,19 +45989,17 @@ class GridContainer extends Reflux.Component {
                 'loading'
             );
         } else {
+            let gridStyling = this.getGridStyling();
+            let data = {};
+            data[this.props.name] = this.state.data;
+            debugger;
             return React.createElement(
                 'div',
-                null,
-                React.createElement(
-                    'h1',
-                    null,
-                    this.props.name
-                ),
-                React.createElement(
-                    'p',
-                    null,
-                    JSON.stringify(this.state.data)
-                )
+                { style: gridStyling },
+                React.createElement(LineGraph, {
+                    title: this.props.name,
+                    data: data
+                })
             );
         }
     }
@@ -46279,7 +46007,7 @@ class GridContainer extends Reflux.Component {
 
 module.exports = GridContainer;
 
-},{"../Utils":182,"../stores/GameStateStoreFactory":192,"react":161,"reflux":179}],190:[function(require,module,exports){
+},{"../Utils":182,"../stores/GameStateStoreFactory":191,"./GenericTimeSeries/LineGraph":187,"react":161,"reflux":179}],189:[function(require,module,exports){
 const React = require('react');
 const Reflux = require('reflux');
 const SessionStoreActions = require('../actions/SessionStoreActions');
@@ -46318,7 +46046,7 @@ class TokenInput extends Reflux.Component {
 
 module.exports = TokenInput;
 
-},{"../actions/SessionStoreActions":184,"react":161,"reflux":179}],191:[function(require,module,exports){
+},{"../actions/SessionStoreActions":184,"react":161,"reflux":179}],190:[function(require,module,exports){
 var ReactDOM = require('react-dom');
 var React = require('react');
 
@@ -46326,7 +46054,7 @@ var Game = require('./components/Game');
 
 ReactDOM.render(React.createElement(Game, null), document.getElementById('app'));
 
-},{"./components/Game":185,"react":161,"react-dom":155}],192:[function(require,module,exports){
+},{"./components/Game":185,"react":161,"react-dom":155}],191:[function(require,module,exports){
 const Reflux = require('reflux');
 
 const Utils = require('../Utils');
@@ -46367,7 +46095,7 @@ function GameStateStoreFactory(name) {
 
 module.exports = GameStateStoreFactory;
 
-},{"../Utils":182,"../actions/GameStateActions":183,"reflux":179}],193:[function(require,module,exports){
+},{"../Utils":182,"../actions/GameStateActions":183,"reflux":179}],192:[function(require,module,exports){
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 const SessionStoreActions = require('../actions/SessionStoreActions');
@@ -46406,7 +46134,7 @@ class SessionStore extends Reflux.Store {
 
 module.exports = SessionStore;
 
-},{"../Utils":182,"../actions/SessionStoreActions":184,"reflux":179}],194:[function(require,module,exports){
+},{"../Utils":182,"../actions/SessionStoreActions":184,"reflux":179}],193:[function(require,module,exports){
 const Reflux = require('reflux');
 const Utils = require('../Utils');
 
@@ -46427,7 +46155,7 @@ class SetupStore extends Reflux.Store {
 
 module.exports = SetupStore;
 
-},{"../Utils":182,"reflux":179}],195:[function(require,module,exports){
+},{"../Utils":182,"reflux":179}],194:[function(require,module,exports){
 const GameStateAcions = require('../actions/GameStateActions');
 const updateInterval = 5000;
 
@@ -46436,14 +46164,14 @@ let currentYear = 2020;
 let increase = () => {
     GameStateAcions.updateState(currentYear);
     currentYear = currentYear + 1;
-    if (currentYear < 2050) {
+    if (currentYear <= 2100) {
         setTimeout(increase, updateInterval);
     }
 };
 
 module.exports = { start: increase };
 
-},{"../actions/GameStateActions":183}],196:[function(require,module,exports){
+},{"../actions/GameStateActions":183}],195:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -46629,4 +46357,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[191]);
+},{}]},{},[190]);

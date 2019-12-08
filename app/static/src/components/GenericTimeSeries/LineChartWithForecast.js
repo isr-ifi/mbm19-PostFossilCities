@@ -319,7 +319,7 @@ class LineChartWithForecast extends Component {
     render() {
         return (
             <div style={{position: "relative", width: 600, height: 550}}>
-
+                {JSON.stringify(this.options())}
                 <Line
                     options={this.options()}
                     data={this.getChartData}

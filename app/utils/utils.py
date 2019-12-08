@@ -37,8 +37,8 @@ def getElements():
                     }
                 ],
                 'position': {
-                    'width': 6,
-                    'height': 12,
+                    'width': 1,
+                    'height': 2,
                     'x': 0,
                     'y': 0
                 },
@@ -48,10 +48,21 @@ def getElements():
                 'name': 'DonutChart',
                 'parameter': [],
                 'position': {
-                    'width': 4,
-                    'height': 12,
-                    'x': 7,
+                    'width': 2,
+                    'height': 1,
+                    'x': 1,
                     'y': 0
+                },
+                'enabled': True,
+                'toolbox': False
+            }, {
+                'name': 'LineChart',
+                'parameter': [],
+                'position': {
+                    'width': 2,
+                    'height': 1,
+                    'x': 1,
+                    'y': 1
                 },
                 'enabled': True,
                 'toolbox': False

@@ -6,7 +6,7 @@ let currentYear = 2020;
 let increase = () => {
     GameStateAcions.updateState(currentYear);
     currentYear = currentYear + 1;
-    if (currentYear < 2050) {
+    if (currentYear <= 2100) {
        setTimeout(increase, updateInterval);
     }
 }
