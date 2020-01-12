@@ -1,6 +1,7 @@
 const React = require('react');
 const Reflux = require('reflux');
 const TokenInput = require('./TokenInput');
+const WebSocketStore = require('../stores/WebSocketHandler').webSocketStore;
 const GameGrid = require('./GameGrid');
 const SessionStore = require('../stores/SessionStore');
 
@@ -11,7 +12,7 @@ class Game extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.store = SessionStore;
+        this.stores = [SessionStore, WebSocketStore];
     }
 
     render() {

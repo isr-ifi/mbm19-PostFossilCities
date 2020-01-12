@@ -12,7 +12,6 @@ class GameGrid extends Reflux.Component {
         super(props);
         this.state = {};
         this.store = SetupStore;
-        WebSocketHandler.start();
 
         this.calculateGridDimensions = this.calculateGridDimensions.bind(this);
     }

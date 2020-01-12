@@ -20,15 +20,15 @@ function GameStateStoreFactory(name) {
             this.state = {loading: true};
         }
 
-        onLoadState(year) {
-            Utils.fetchGameData(name, year).then(res => {
+        onLoadState() {
+            Utils.fetchGameData(name).then(res => {
                 res.loading = false;
                 this.setState(res);
             });
         }
 
-        onUpdateState(year) {
-            this.onLoadState(year);
+        onUpdateState() {
+            this.onLoadState();
         }
     }
 

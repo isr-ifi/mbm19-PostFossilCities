@@ -28,8 +28,8 @@ function fetchGameSetup() {
     return fetchDataWithToken('/setup/getSetup');
 }
 
-function fetchGameData(name = "test", year = 2035) {
-    return fetchDataWithToken('/progress/getValues/' + name, {year: year})
+function fetchGameData(name = "test") {
+    return fetchDataWithToken('/progress/getValues/' + name)
 }
 
 function checkToken(token) {

@@ -1,6 +1,6 @@
 To create a docker container for the flask backend:
 
-```docker build -t flaskdock```
+```docker build -t flaskdock .```
 
 To start the docker, map the file system and open the port:
 

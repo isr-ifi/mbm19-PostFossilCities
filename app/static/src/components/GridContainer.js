@@ -38,7 +38,6 @@ class GridContainer extends Reflux.Component {
             let gridStyling = this.getGridStyling();
             let data = {};
             data[this.props.name] = this.state.data;
-            debugger;
             return ( 
                 <div style={gridStyling}>
                     <LineGraph
