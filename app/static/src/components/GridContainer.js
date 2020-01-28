@@ -1,24 +1,16 @@
-const React = require('react');
-const Reflux = require('reflux');
-const Utils = require('../Utils');
-const GameStateStoreFactory = require('../stores/GameStateStoreFactory');
-const LineGraph = require('./GenericTimeSeries/LineGraph')
+import React from 'react';
+import {connect} from 'react-redux';
+import {fetchData} from '../actions/ReduxActions';
+import LineGraph from './GenericTimeSeries/LineGraph';
 
 /**
  * Renders data for one given name
  */
-class GridContainer extends Reflux.Component {
+class GridContainerVisible extends React.Component {
     constructor(props) {
         super(props);
-        const storeObject = GameStateStoreFactory(props.name)
-        this.store = storeObject.store;
-        this.storeActions = storeObject.actions;
-
         this.getGridStyling = this.getGridStyling.bind(this);
-    }
-
-    componentDidMount() {
-        this.storeActions.loadState(2020);
+        this.props.initialLoad(this.props.name);
     }
 
     getGridStyling() {
@@ -32,17 +24,15 @@ class GridContainer extends Reflux.Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (!this.props.data || !this.props.data[this.props.name] || this.props.data[this.props.name].loading) {
             return <p>loading</p>
         } else {
             let gridStyling = this.getGridStyling();
-            let data = {};
-            data[this.props.name] = this.state.data;
             return ( 
                 <div style={gridStyling}>
                     <LineGraph
                         title={this.props.name}
-                        data={data}
+                        data={this.props.data[this.props.name]}
                     />
                 </div>
             );
@@ -50,5 +40,19 @@ class GridContainer extends Reflux.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        data: state.data,
+    }
+}
 
-module.exports = GridContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        initialLoad: token => {
+            dispatch(fetchData(token))
+        }
+    }
+}
+
+const GridContainer = connect(mapStateToProps, mapDispatchToProps)(GridContainerVisible)
+export default GridContainer;

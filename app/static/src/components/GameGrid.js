@@ -1,25 +1,20 @@
-const React = require('react');
-const Reflux = require('reflux');
-const SetupStore = require('../stores/SetupStore');
-const GridContainer = require('./GridContainer')
-const WebSocketHandler = require('../stores/WebSocketHandler');
+import React from 'react';
+import GridContainer from './GridContainer';
+import {connect} from 'react-redux';
 
 /**
  * Root Component, renders either token input or display elements
  */
-class GameGrid extends Reflux.Component {
+class GameGridVisible extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
-        this.store = SetupStore;
-
         this.calculateGridDimensions = this.calculateGridDimensions.bind(this);
     }
 
     calculateGridDimensions() {
         let maxWidth = 1;
         let maxHeight = 1;
-        this.state.elements.components.forEach(item => {
+        this.props.config.elements.components.forEach(item => {
             let x = parseInt(item.position.x);
             let y = parseInt(item.position.y);
             let height = parseInt(item.position.height);
@@ -35,10 +30,10 @@ class GameGrid extends Reflux.Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (this.props.loading || this.props.init) {
             return <p>loading</p>
         }
-        var gridContainer = this.state.elements.components.map(item => {
+        var gridContainer = this.props.config.elements.components.map(item => {
             return <GridContainer name={item.name} key={item.name} position={item.position}/>
         })
         let gridDimensions = this.calculateGridDimensions();
@@ -52,8 +47,15 @@ class GameGrid extends Reflux.Component {
             </div>
         );
     }
-    
 }
 
+const mapStoreToProps = state => {
+    return {
+        loading: state.config.loading,
+        init: state.config.init,
+        config: state.config.config,
+    }
+}
 
-module.exports = GameGrid;
+const GameGrid = connect(mapStoreToProps)(GameGridVisible);
+export default GameGrid;

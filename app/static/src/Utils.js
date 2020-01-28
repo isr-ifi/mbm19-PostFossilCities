@@ -1,6 +1,4 @@
-const SessionStoreActions = require('./actions/SessionStoreActions');
-
-function fetchData(path, methodArguments) {
+export function fetchData(path, methodArguments) {
     let adress = "http://" + window.location.host + path;
     if (methodArguments) {
         let queryArgs = "";
@@ -14,35 +12,24 @@ function fetchData(path, methodArguments) {
     })
 }
 
-function fetchDataWithToken(path, methodArguments = {}) {
+export function fetchDataWithToken(path, methodArguments = {}) {
     methodArguments.token = getCookie('token')
-    return fetchData(path, methodArguments).then(res => {
-        if (!res.valid) {
-            SessionStoreActions.invalidToken(res.token);
-        }
-        return res;
-    });
+    return fetchData(path, methodArguments)
 }
 
-function fetchGameSetup() {
+export function fetchGameSetup() {
     return fetchDataWithToken('/setup/getSetup');
 }
 
-function fetchGameData(name = "test") {
+export function fetchGameData(name = "test") {
     return fetchDataWithToken('/progress/getValues/' + name)
 }
 
-function checkToken(token) {
-    return fetchData('/checkToken', { token: token || getCookie('token')}).then(res => {
-        if (res.valid) {
-            SessionStoreActions.validToken(res.token);
-        } else {
-            SessionStoreActions.invalidToken(res.token);
-        }
-    })
+export function checkToken(token) {
+    return fetchData('/checkToken', { token: token || getCookie('token')})
 }
 
-function getCookie(cookieName) {
+export function getCookie(cookieName) {
     var name = cookieName + '=';
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -64,4 +51,4 @@ Utils.getCookie = getCookie;
 Utils.checkToken = checkToken;
 Utils.fetchGameData = fetchGameData;
 
-module.exports = Utils;
+export default Utils;

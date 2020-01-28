@@ -1,30 +1,38 @@
-const React = require('react');
-const Reflux = require('reflux');
-const TokenInput = require('./TokenInput');
-const WebSocketStore = require('../stores/WebSocketHandler').webSocketStore;
-const GameGrid = require('./GameGrid');
-const SessionStore = require('../stores/SessionStore');
+import React from 'react';
+import {connect} from 'react-redux';
+import {checkToken} from '../actions/ReduxActions';
+import TokenInput from'./TokenInput';
+import GameGrid from './GameGrid';
 
-/**
- * Root Component, renders either token input or display elements
- */
-class Game extends Reflux.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-        this.stores = [SessionStore, WebSocketStore];
-    }
-
+class GameVisible extends React.Component {
     render() {
-        if (this.state.loading) {
+        if (this.props.loading) {
             return <p>loading</p>
-        } else if (this.state.valid && !this.state.loading) {
+        } else if (this.props.valid) {
             return <GameGrid/>
         } else {
-            return <TokenInput/>
+            return <TokenInput callBack={this.props.callBack}/>
         }
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        loading: state.token.loading || state.config.loading,
+        valid: state.token.valid,
+    } 
+}
 
-module.exports = Game;
+const mapDispatchToProps = dispatch => {
+    return {
+        callBack: token => {
+            dispatch(checkToken(token))
+        }
+    }
+}
+
+/**
+ * Root Component, renders either token input or display elements
+ */
+const Game = connect(mapStateToProps, mapDispatchToProps)(GameVisible);
+export default Game

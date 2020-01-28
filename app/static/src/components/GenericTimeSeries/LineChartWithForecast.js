@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 const Component = React.Component;
 
 const ReactChartJS2 = require('react-chartjs-2');
@@ -335,5 +335,5 @@ class LineChartWithForecast extends Component {
 }
 
 
-module.exports = LineChartWithForecast;
+export default LineChartWithForecast;
 

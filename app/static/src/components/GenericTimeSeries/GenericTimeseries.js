@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-const LineChartWithForecast = require('./LineChartWithForecast');
+import LineChartWithForecast from './LineChartWithForecast';
 
 class GenericTimeseries extends React.Component {
 

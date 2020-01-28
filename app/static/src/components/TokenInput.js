@@ -1,18 +1,13 @@
-const React = require('react');
-const Reflux = require('reflux');
-const SessionStoreActions = require('../actions/SessionStoreActions');
+import React from 'react';
 
 /**
  * Component for Entering token, will be fullscreen
  */
-class TokenInput extends Reflux.Component {
+class TokenInput extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {token: "Enter a Token"}
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -21,17 +16,17 @@ class TokenInput extends Reflux.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        SessionStoreActions.setToken(this.state.token);
+        this.props.callBack(this.state.token);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type='text' value={this.state.token} onChange={this.handleChange}/>
+            <form onSubmit={(event) => this.handleSubmit(event)}>
+                <input type='text' value={this.state.token} onChange={(event) => this.handleChange(event)}/>
                 <input type='submit' value='Submit'/>
             </form>
         )
     }
 }
  
-module.exports = TokenInput;
+export default TokenInput;

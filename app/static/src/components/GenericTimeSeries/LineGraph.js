@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 const ReactChartJS2 = require('react-chartjs-2');
 const Line = ReactChartJS2.Line;
 
@@ -9,10 +9,6 @@ class LineGraph extends React.Component {
         this.prepareData = this.prepareData.bind(this);
         this.prepareOptions = this.prepareOptions.bind(this);
         //console.log(this.state.data)
-
-    }
-
-    componentDidMount() {
 
     }
 
@@ -84,4 +80,4 @@ class LineGraph extends React.Component {
 
 }
 
-module.exports = LineGraph
+export default LineGraph
