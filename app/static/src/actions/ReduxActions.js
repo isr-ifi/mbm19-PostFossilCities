@@ -95,6 +95,7 @@ export function checkToken(token) {
                     console.log('Connected');
                 });
                 socket.on('update', (data) => {
+                    console.log("Current Year: " + data.year);
                     Object.keys(getState().data).forEach(key => {
                         dispatch(fetchData(key))
                     })

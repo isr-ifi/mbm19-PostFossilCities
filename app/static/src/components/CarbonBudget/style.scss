@@ -1,0 +1,24 @@
+.liquidFillGaugeText {
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.card {
+  //background-image: linear-gradient(to bottom right, lighten(rgb(92, 197, 255), 10), lighten(rgb(145, 231, 255), 10));
+  //background-image: linear-gradient(to bottom right, lighten(rgb(92, 197, 255), 10), lighten(rgb(159, 255, 180), 10));
+
+  overflow: hidden;
+}
+
+
+.carbon-budget-left {
+  float: left;
+  width: 620px !important;
+
+}
+
+.carbon-budget-right {
+  float: right;
+  width: 620px
+
+}
