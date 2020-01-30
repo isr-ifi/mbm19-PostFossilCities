@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Index from './index';
 import { fetchData } from '../actions/ReduxActions';
 
@@ -17,6 +17,33 @@ const ComponentDict = {
     GENERIC_TIMESERIES: 'GenericTimeseries',
 }
 
+function calculateGridDimensions(components) {
+    let maxWidth = 1;
+    let maxHeight = 1;
+    components.forEach(item => {
+        let x = parseInt(item.component_position.x);
+        let y = parseInt(item.component_position.y);
+        let height = parseInt(item.component_position.height);
+        let width = parseInt(item.component_position.width);
+        if (width + x > maxWidth) {
+            maxWidth = width + x;
+        }
+        if (height + y > maxHeight) {
+            maxHeight = height + y;
+        }
+    });
+    return { width: maxWidth, height: maxHeight };
+}
+
+function getComponentStyling(position) {
+    let result = {};
+    result.gridColumnStart = parseInt(position.x) + 1;
+    result.gridColumnEnd = result.gridColumnStart + parseInt(position.width);
+    result.gridRowStart = parseInt(position.y) + 1;
+    result.gridRowEnd = result.gridRowStart + parseInt(position.height);
+    return result;
+}
+
 export default function GameGrid(props) {
 
     const loading = useSelector(state => state.config.loading);
@@ -30,7 +57,8 @@ export default function GameGrid(props) {
 
     // Get Valid Containers
     let validComponents = config.filter(item => {
-        return ComponentDict[item.component_type] !== undefined;
+        // Explicitly check wether enabled is set to false or toolbox to true
+        return ComponentDict[item.component_type] !== undefined && (item.enabled !== false) && (item.toolbox !== true);
     })
 
     // load data if not happened yet
@@ -52,17 +80,25 @@ export default function GameGrid(props) {
 
     // Construct the components
     let components = validComponents.map(item => {
-        const Component = Index[ComponentDict[item.component_type]]
-        return <Component 
-            component_title={item.component_title} 
-            key={item.component_id} 
-            component_id={item.component_id}
-            {...item.component_settings}
-        />
+        const Component = Index[ComponentDict[item.component_type]];
+        let componentStyling = getComponentStyling(item.component_position);
+        return (
+            <div style={componentStyling} key={item.component_id}>
+                <Component
+                    component_title={item.component_title}
+                    key={item.component_id}
+                    component_id={item.component_id}
+                    {...item.component_settings}
+                />
+            </div>
+        )
     })
-    return ( 
+
+    let gridDimensions = calculateGridDimensions(validComponents);
+
+    return (
         <div>
-            <div>
+            <div style={{ display: 'grid', gridGap: '10px', gridTemplateColumns: 'repeat(' + gridDimensions.width + ', 1fr)', gridTemplateRows: 'repeat(' + gridDimensions.height + ', 1fr)', height: '100vh', width: '100vw' }}>
                 {components}
             </div>
         </div>

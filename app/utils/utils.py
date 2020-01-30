@@ -223,6 +223,7 @@ def getElements():
     return {
         "component_setups": [
             {
+                "component_position":{"width":4,"height":4,"x":0,"y":0},
                 "component_type": 'GENERIC_VALUE',
                 "component_title": 'Anzahl Autos',
                 "component_id": 'test_1',
@@ -243,6 +244,7 @@ def getElements():
                 },
             }, 
             {
+                "component_position":{"width":4,"height":4,"x":4,"y":0},
                 "component_type": 'ROLLSPECIFIC_GOALS',
                 "component_title": 'Erfüllungsgrad der Rollenziele',
                 "component_id": 'rollspecific_goals_1',
@@ -273,6 +275,7 @@ def getElements():
 
             },
             {
+                "component_position":{"width":4,"height":4,"x":8,"y":0},
                 "component_type": 'CARBON_BUDGET',
                 "component_title": 'Carbon Budget 1',
                 "component_id": 'carbon_budget_1',
@@ -338,6 +341,7 @@ def getElements():
                 }
             },
             {
+                "component_position":{"width":6,"height":4,"x":0,"y":4},
                 "component_type": 'GENERIC_ROLLS',
                 "component_title": 'Getätigte klimarelevante Massnahmen',
                 "component_id": 'generic_rolls_1',
@@ -358,6 +362,7 @@ def getElements():
                 }
             },   
             {
+                "component_position":{"width":6,"height":4,"x":6,"y":4},
                 "component_type": 'GENERIC_TIMESERIES',
                 "component_title": 'Verkehrsmittel im Personenverkehr',
                 "component_id": 'generic_timeseries_1',
