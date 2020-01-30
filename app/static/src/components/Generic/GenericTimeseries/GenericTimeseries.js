@@ -109,6 +109,13 @@ function GenericTimeseries (props) {
 
     // Subscribe to storage
     // --------------------
+
+    // Patricks Version
+    // const today     = useSelector(state => state.genericTimeseries[id].today);
+    // const min       = useSelector(state => state.genericTimeseries[id].min);
+    // const max       = useSelector(state => state.genericTimeseries[id].max);
+    // const data      = useSelector(state => state.genericTimeseries[id].data);
+
     const today     = useSelector(state => state.data[id].data.today);
     const min       = useSelector(state => state.data[id].data.min);
     const max       = useSelector(state => state.data[id].data.max);

@@ -258,6 +258,13 @@ function CarbonGaugeLoader (props) {
 
     // Subscribe to storage
     // --------------------
+
+    // Patricks Version
+    // const cumulated_emissions       = useSelector(state => state.carbonBudget[id].cumulated_emissions);
+    // const critical_emissions        = useSelector(state => state.carbonBudget[id].critical_emissions);
+    // const year_to_budget            = useSelector(state => state.carbonBudget[id].years_left);
+    // const year_speed                = useSelector(state => state.carbonBudget[id].year_speed);
+
     const cumulated_emissions       = useSelector(state => state.data[id].data.gauge.cumulated_emissions);
     const critical_emissions        = useSelector(state => state.data[id].data.gauge.critical_emissions);
     const year_to_budget            = useSelector(state => state.data[id].data.gauge.years_left);
@@ -396,6 +403,15 @@ function CarbonEmissionAreaChartNewLoader(props) {
 
     // Subscribe to storage
     // --------------------
+
+    // Patricks Version
+    // const today                     = useSelector(state => state.carbonBudget[id].today);
+    // const min                       = useSelector(state => state.carbonBudget[id].min);
+    // const max                       = useSelector(state => state.carbonBudget[id].max);
+    // const timeseries                = useSelector(state => state.carbonBudget[id].timeseries);
+
+    // const change                    = useSelector(state => state.carbonBudget[id].change);
+
     const today                     = useSelector(state => state.data[id].data.area.today);
     const min                       = useSelector(state => state.data[id].data.area.min);
     const max                       = useSelector(state => state.data[id].data.area.max);

@@ -76,6 +76,10 @@ function GenericValue (props) {
 
     // Subscribe to storage
     // --------------------
+
+    // Patricks Version
+    // const value     = useSelector(state => state.genericValue[id].value);
+
     const value     = useSelector(state => state.data[id].data.value);
 
     return (

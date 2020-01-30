@@ -82,6 +82,21 @@ function GenericRolls (props){
 
     // Subscribe to storage
     // --------------------
+
+    // Patricks Version
+    // const genericRolls  = useSelector(state => state.genericRolls);
+    // const min           = useSelector(state => state.genericRolls[id].min);
+    // const max           = useSelector(state => state.genericRolls[id].max);
+    // const data          = useSelector(state => state.genericRolls[id].data);
+
+    // const politics      = useSelector(state => state.genericRolls[id].data.politics);
+    // const energy        = useSelector(state => state.genericRolls[id].data.energy);
+    // const investor      = useSelector(state => state.genericRolls[id].data.investor);
+    // const population    = useSelector(state => state.genericRolls[id].data.population);
+    // const planer        = useSelector(state => state.genericRolls[id].data.planer);
+    // const niche         = useSelector(state => state.genericRolls[id].data.niche);
+    // const industry      = useSelector(state => state.genericRolls[id].data.industry);
+
     const min           = useSelector(state => state.data[id].data.min);
     const max           = useSelector(state => state.data[id].data.max);
     const data          = useSelector(state => state.data[id].data.data);

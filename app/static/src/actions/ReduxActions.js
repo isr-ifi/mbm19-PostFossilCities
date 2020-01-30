@@ -78,6 +78,8 @@ export function updateData(id, data) {
     };
 }
 
+// Middle Ware for asynchronous server calls
+
 /**
  * Update the current state for the given id with the currently set token
  * @param {string} id
