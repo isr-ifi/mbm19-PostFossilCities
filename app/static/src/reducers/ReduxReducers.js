@@ -5,38 +5,41 @@ import {
     REQUEST_CONFIG,
     SET_CONFIG,
     UPDATE_DATA,
-    REQUEST_DATA,
-} from '../actions/ReduxActions'
+    REQUEST_DATA
+} from '../actions/ReduxActions';
 
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-function token(state = {loading: false, init: true}, action) {
-    switch(action.type) {
+// Reducers related to the token
+function token(state = { loading: false, init: true }, action) {
+    switch (action.type) {
         case VALID_TOKEN:
-            document.cookie = "token=" + action.token;
-            return {token: action.token, valid: true, loading: false, init: false};
+            document.cookie = 'token=' + action.token;
+            return { token: action.token, valid: true, loading: false, init: false };
         case INVALID_TOKEN:
-            return {token: action.token, valid: false, loading: false, init: true};
+            return { token: action.token, valid: false, loading: false, init: true };
         case SET_TOKEN:
-            return {token: action.token, valid: false, loading: true, init: true};
+            return { token: action.token, valid: false, loading: true, init: true };
         default:
             return state;
     }
 }
 
-function config(state = {loading: false, action: {}, init: true}, action) {
-    switch(action.type) {
+// Reducers related to the config
+function config(state = { loading: false, action: {}, init: true }, action) {
+    switch (action.type) {
         case SET_CONFIG:
-            return {config: action.config, loading: false, init: false};
+            return { config: action.config, loading: false, init: false };
         case REQUEST_CONFIG:
-            return {loading: true, init: true};
+            return { loading: true, init: true };
         default:
             return state;
     }
 }
 
+// Reducers related to the data
 function data(state = {}, action) {
-    switch(action.type) {
+    switch (action.type) {
         case UPDATE_DATA:
             let partialState = {};
             partialState[action.id] = action.data;
@@ -52,7 +55,7 @@ function data(state = {}, action) {
 const reducers = combineReducers({
     token,
     config,
-    data,
-})
+    data
+});
 
 export default reducers;
