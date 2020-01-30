@@ -3,7 +3,11 @@ from flask_socketio import send
 import threading
 
 UPDATE_INTERVAL = 5
+
+# Dict with all currently connected tokens
 connectedTokens = {}
+
+# Dict with semaphores for the connected users per token, if one reaches zero it can be discarded
 connectedTokensCounter = {}
 
 
@@ -23,6 +27,7 @@ class DummyData:
         self.active = True
         self.tick()
 
+    # This method emits the websocket event and sets itself a timeout to start the next later if year < 2100
     def tick(self):
         if (not self.active):
             return
@@ -35,6 +40,7 @@ class DummyData:
     def inactivate(self):
         self.active = False
 
+    # Creates more or less random data based on the token and the current year
     def getData(self, kind):
         # Note that this are random data generators specifically for the component_ids from below
 
@@ -69,40 +75,40 @@ class DummyData:
                     "label":                      'Haushalte',
                     "values": [{
                         "date":                   1577833200000,
-                        "value":                  51.31
+                        "value":                  31.31
                     }, {
                         "date":                   1609455600000,
-                        "value":                  34.35
+                        "value":                  14.35
                     }],
                     "capturing":                  False
                 }, {
                     "label":                      'CO2 Rückgewinnung',
                     "values": [{
                         "date":                   1577833200000,
-                        "value":                  20.03
+                        "value":                  15.03
                     }, {
                         "date":                   1609455600000,
-                        "value":                  21.06
+                        "value":                  11.06
                     }],
                     "capturing":                  True
                 }, {
                     "label":                      'Transport',
                     "values": [{
                         "date":                   1577833200000,
-                        "value":                  51.31
+                        "value":                  31.31
                     }, {
                         "date":                   1609455600000,
-                        "value":                  34.35
+                        "value":                  24.35
                     }],
                     "capturing":                  False
                 }, {
                     "label":                      'Industrie',
                     "values": [{
                         "date":                   1577833200000,
-                        "value":                  20.03
+                        "value":                  10.03
                     }, {
                         "date":                   1609455600000,
-                        "value":                  21.06
+                        "value":                  11.06
                     }],
                     "capturing":                  False
                 }, {
@@ -181,6 +187,7 @@ class DummyData:
                 }]
             }
 
+        # Fallback
         random.seed(kind + self.token)
         initValue = random.randrange(0, 1000)
         decrease = random.randint(0, 1) == 1
@@ -192,7 +199,7 @@ class DummyData:
                 values.update({i: (values[i - 1] + random.uniform(-5.0, 10))})
         return values
 
-
+# Regsiters a new client for a given token and returns the corresponding Dummy Data Object
 def getDummyDataObject(token, socketio):
     if (token in connectedTokensCounter):
         connectedTokensCounter.update(
@@ -207,7 +214,7 @@ def getDummyDataObject(token, socketio):
         connectedTokens.update({token: dummyData})
         return connectedTokens.get(token)
 
-
+# Remove a client from a given token, if it was the last token remove the DummyData Object and inactivate it
 def removeDummyDataObject(token):
     if (token in connectedTokens and token in connectedTokensCounter):
         connectedTokensCounter.update(
@@ -218,8 +225,10 @@ def removeDummyDataObject(token):
         connectedTokensCounter.pop(token)
         connectedTokens.pop(token).inactivate()
 
-
-def getElements():
+# Returns the Config for a given token
+def getElements(token):
+    
+    # Currently retunrns the same config for all tokens
     return {
         "component_setups": [
             {

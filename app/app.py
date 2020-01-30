@@ -1,6 +1,5 @@
 import eventlet
 eventlet.monkey_patch()
-from threading import Timer
 from utils.utils import getDummyDataObject, getConnectedTokens, removeDummyDataObject
 from game_progress.game_progress import game_progress
 from game_setup.game_setup import game_setup
@@ -17,22 +16,22 @@ socketio = SocketIO(app)
 
 
 @app.route("/index.html")
-def hello():
+def getIndex():
     return app.send_static_file('src/index.html')
 
 
 @app.route("/build/app.js")
-def helloJs():
+def getJS():
     return app.send_static_file('build/app.js')
 
 
 @app.route("/build/main.a1ece92d.chunk.css")
-def helloCSS():
+def getCSS():
     return app.send_static_file('build/main.a1ece92d.chunk.css')
 
 
 @app.route('/')
-def index():
+def getRoot():
     return redirect('index.html')
 
 
@@ -44,18 +43,14 @@ def checkToken():
         'token': token,
     })
 
-
-@app.route('/method/myMethodName')
-def helloMethod():
-    return jsonify({
-        "value": "Hello From Server"
-    })
-
-
 @socketio.on('connect')
-def test_connect():
+def connect():
     token = request.args.get('token')
+
+    # Create the dummy data object
     getDummyDataObject(token, socketio)
+
+    # Join the room with the same token so all connected clients with the same token get the same websocket event
     join_room(token)
     app.logger.info("Session connected with token: " + token)
 

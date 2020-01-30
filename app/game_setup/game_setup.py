@@ -10,5 +10,5 @@ def getSetup():
     return jsonify({
         'valid': True,
         'token': token,
-        'elements': getElements()
+        'elements': getElements(token)
     })
