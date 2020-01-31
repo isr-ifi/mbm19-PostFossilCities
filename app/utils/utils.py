@@ -33,7 +33,9 @@ class DummyData:
             return
         self.year = self.year + 1
         self.socketio.emit(
-            'update', {'year': self.year, 'token': self.token}, room=self.token)
+
+            # ids are based on the test configuration below, note that 'gerneric_time_series_1' is excluded because at the moment there is no random data generated
+            'update', {'year': self.year, 'token': self.token, 'ids': ['test_1', 'carbon_budget_1', 'generic_rolls_1', 'rollspecific_goals_1']}, room=self.token)
         if (self.year < 2100):
             threading.Timer(UPDATE_INTERVAL, self.tick).start()
 

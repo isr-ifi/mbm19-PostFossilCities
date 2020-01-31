@@ -34,6 +34,8 @@ function calculateGridDimensions(components) {
  */
 function getComponentStyling(position) {
     let result = {};
+    
+    // Note that the numeration in css grid starts with 1
     result.gridColumnStart = parseInt(position.x) + 1;
     result.gridColumnEnd = result.gridColumnStart + parseInt(position.width);
     result.gridRowStart = parseInt(position.y) + 1;

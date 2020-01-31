@@ -124,9 +124,9 @@ export function checkToken(token) {
                 });
                 socket.on('update', data => {
                     console.log('Current Year: ' + data.year);
-                    Object.keys(getState().data).forEach(key => {
-                        dispatch(fetchData(key));
-                    });
+                    data.ids && data.ids.forEach(id => {
+                        dispatch(fetchData(id));
+                    })
                 });
             } else {
                 dispatch(invalidToken(token));
