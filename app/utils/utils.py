@@ -202,6 +202,8 @@ class DummyData:
         return values
 
 # Regsiters a new client for a given token and returns the corresponding Dummy Data Object
+
+
 def getDummyDataObject(token, socketio):
     if (token in connectedTokensCounter):
         connectedTokensCounter.update(
@@ -217,6 +219,8 @@ def getDummyDataObject(token, socketio):
         return connectedTokens.get(token)
 
 # Remove a client from a given token, if it was the last token remove the DummyData Object and inactivate it
+
+
 def removeDummyDataObject(token):
     if (token in connectedTokens and token in connectedTokensCounter):
         connectedTokensCounter.update(
@@ -228,179 +232,346 @@ def removeDummyDataObject(token):
         connectedTokens.pop(token).inactivate()
 
 # Returns the Config for a given token
+
+
 def getElements(token):
-    
+
     # Currently retunrns the same config for all tokens
     return {
-        "component_setups": [
+        "gameConfiguration": [
             {
-                "component_position":{"width":4,"height":4,"x":0,"y":0},
-                "component_type": 'GENERIC_VALUE',
-                "component_title": 'Anzahl Autos',
-                "component_id": 'test_1',
-                "component_settings": {
-                    "settings": {
-                        "min":                0,
-                        "max":                400,
-                        "unit":               'Tausend',
-                        "separator":          '',
-                        "colors": {
-                            "start":          {"r": 191, "g": 80, "b": 81},
-                            "end":            {"r": 166, "g": 204, "b": 82}
-                        },
-                        "color_shift":        True,
-                        "symbol_unit":        '',
-                    },
-                    "value":                  300.4,
-                },
-            }, 
-            {
-                "component_position":{"width":4,"height":4,"x":4,"y":0},
-                "component_type": 'ROLLSPECIFIC_GOALS',
-                "component_title": 'Erfüllungsgrad der Rollenziele',
-                "component_id": 'rollspecific_goals_1',
-                "component_settings": {
-                    "goals": {
-                        "politics":           'Belietheit der Politik',
-                        "energy":             'Energie-_versorgungsgrad',
-                        "investor":           'ROI',
-                        "population":         'Wohlbefinden',
-                        "planer":             'Ökologische Infrastuktur',
-                        "niche":              'Einfluss der Nischenspieler',
-                        "industry":           'Profit der Industrie'
-                    },
-                    "settings": {
-                        "colors": {
-                            "politics":       ["rgba(199, 70, 40, 1)", "rgba(225, 116, 47, 1)"],
-                            "energy":         ["rgba(249, 200, 52, 1)", "rgba(255, 248, 86, 1)"],
-                            "investor":       ["rgba(90, 98, 100, 1)", "rgba(162, 170, 172, 1)"],
-                            "population":     ["rgba(38, 111, 46, 1)", "rgba(167, 193, 85, 1)"],
-                            "planer":         ["rgba(27, 73, 191, 1)", "rgba(106, 180, 236, 1)"],
-                            "niche":          ["rgba(85, 44, 244, 1)", "rgba(146, 28, 227, 1)"],
-                            "industry":       ["rgba(79, 54, 36, 1)", "rgba(181, 143, 96, 1)"],
-                        },
-                        "round_caps":         True,
-                        "high_contrast":      True,
-                    },
-                }
-
-            },
-            {
-                "component_position":{"width":4,"height":4,"x":8,"y":0},
-                "component_type": 'CARBON_BUDGET',
-                "component_title": 'Carbon Budget 1',
-                "component_id": 'carbon_budget_1',
-                "component_settings": {
-                    "carbon_gauge": {
-                        "title":                  'Emissionen seit 2020',
-                        "unit":                   'Megatonnen',
-                        "emissions_label":        'Kumulierte Emissionen',
-                        "critical_label":         'Kritischer Wert',
-                        "year_label": [
-                            'Noch',
-                            'Jahre'
-                        ],
-                        "settings": {
-                            "colors": {
-                                "light":          "rgba(94, 77, 50, 1)",
-                                "dark":           "rgba(41, 21, 7, 1)"
-                            }
-                        }
-                    },
-                    "carbon_area": {
-                        "title":                  'Jährliche CO2 Quellen',
-                        "y_axis":                 'Megatonnen CO2',
-                        "settings": {
-                            "colors": [
-                                {
-                                    "label":          "Haushalte",
-                                    "color":          ["rgba(106, 180, 236, 1)", "rgb(231,241,255)"],
-                                    "capturing":      False,
-                                }, {
-                                    "label":          "CO2 Rückgewinnung",
-                                    "color":          ["rgba(146, 28, 227, 1)", "rgb(201,163,227)"],
-                                    "capturing":      True,
-                                }, {
-                                    "label":          "Transport",
-                                    "color":          ["rgba(199, 70, 40, 1)", "rgb(255,236,234)"],
-                                    "capturing":      False,
-                                }, {
-                                    "label":          "Industrie",
-                                    "color":          ["rgba(167, 193, 85, 1)", "rgb(243,255,240)"],
-                                    "capturing":      False,
-                                }, {
-                                    "label":          "Energy",
-                                    "color":          ["rgba(249, 200, 52, 1)", "rgb(249,239,223)"],
-                                    "capturing":      False,
-                                }
-                            ],
-                            "lines":                  8,
-                            "thickness":              2
-                        }
-                    },
-                    "data_carbon_gauge": {
-                        "cumulated_emissions":    0,
-                        "critical_emissions":     1500,
-                        "years_left":             10,
-                        "year_speed":             5,
-                    },
-                    "data_carbon_area": {
-                        "today":                  '01 Jan 2030',
-                        "min":                    0,
-                        "max":                    100,
-                    },
-                }
-            },
-            {
-                "component_position":{"width":6,"height":4,"x":0,"y":4},
-                "component_type": 'GENERIC_ROLLS',
-                "component_title": 'Getätigte klimarelevante Massnahmen',
-                "component_id": 'generic_rolls_1',
-                "component_settings": {
-                    "title":          "Getätigte klimarelevante Massnahmen",
-                    "yAxis":          "Anzahl",
-                    "min":            0,
-                    "max":            25,
-                    "settings": {
-                        "politics":       ["rgba(199, 70, 40, 1)", "rgba(225, 116, 47, 1)"],
-                        "energy":         ["rgba(249, 200, 52, 1)", "rgba(255, 248, 86, 1)"],
-                        "investor":       ["rgba(90, 98, 100, 1)", "rgba(162, 170, 172, 1)"],
-                        "population":     ["rgba(38, 111, 46, 1)", "rgba(167, 193, 85, 1)"],
-                        "planer":         ["rgba(27, 73, 191, 1)", "rgba(106, 180, 236, 1)"],
-                        "niche":          ["rgba(85, 44, 244, 1)", "rgba(146, 28, 227, 1)"],
-                        "industry":       ["rgba(79, 54, 36, 1)", "rgba(181, 143, 96, 1)"],
-                    }
-                }
-            },   
-            {
-                "component_position":{"width":6,"height":4,"x":6,"y":4},
-                "component_type": 'GENERIC_TIMESERIES',
-                "component_title": 'Verkehrsmittel im Personenverkehr',
-                "component_id": 'generic_timeseries_1',
-                "component_settings": {
-                    "title":      "Genutzte Verkehrsmittel im Personenverkehr",
-                    "today":      "01 Jan 2030",
-                    "y_axis":     "Millionen Personenkilometer",
-                    "min":      0,
-                    "max":      200,
-                    "settings": {
-                        "colors": [
+                "id": "1",
+                "views": [
+                    {
+                        "id": "1",
+                        "components": [
                             {
-                                "label": "Personenwagen",
-                                "color": "rgba(199, 70, 40, 1)"
-                            }, {
-                                "label": "Bus und Tram",
-                                "color":  "rgba(27, 73, 191, 1)"
-                            }, {
-                                "label": "Zug",
-                                "color":  "rgba(146, 28, 227, 1)"
-                            }, {
-                                "label": "Fuss und Velo",
-                                "color":  "rgba(38, 111, 46, 1)"
-                            }],
-                        "lines":  9
-                    },
-                }
+                                "position": {"width": 4, "height": 4, "x": 0, "y": 0},
+                                "type": 'generic_value',
+                                "title": 'Anzahl Autos',
+                                "id": 'test_1',
+                                "parameters": {
+                                    "settings": {
+                                        "min":                0,
+                                        "max":                400,
+                                        "unit":               'Tausend',
+                                        "separator":          '',
+                                        "colors": {
+                                            "start":          {"r": 191, "g": 80, "b": 81},
+                                            "end":            {"r": 166, "g": 204, "b": 82}
+                                        },
+                                        "color_shift":        True,
+                                        "symbol_unit":        '',
+                                    },
+                                    "value":                  300.4,
+                                },
+                            },
+                            {
+                                "position": {"width": 4, "height": 4, "x": 4, "y": 0},
+                                "type": 'rollspecific_goals',
+                                "title": 'Erfüllungsgrad der Rollenzieless',
+                                "id": 'rollspecific_goals_1',
+                                "parameters": {
+                                    "goals": {
+                                        "politics":           'Belietheit der Politik',
+                                        "energy":             'Energie-_versorgungsgrad',
+                                        "investor":           'ROI',
+                                        "population":         'Wohlbefinden',
+                                        "planer":             'Ökologische Infrastuktur',
+                                        "niche":              'Einfluss der Nischenspieler',
+                                        "industry":           'Profit der Industrie'
+                                    },
+                                    "settings": {
+                                        "colors": {
+                                            "politics":       ["rgba(199, 70, 40, 1)", "rgba(225, 116, 47, 1)"],
+                                            "energy":         ["rgba(249, 200, 52, 1)", "rgba(255, 248, 86, 1)"],
+                                            "investor":       ["rgba(90, 98, 100, 1)", "rgba(162, 170, 172, 1)"],
+                                            "population":     ["rgba(38, 111, 46, 1)", "rgba(167, 193, 85, 1)"],
+                                            "planer":         ["rgba(27, 73, 191, 1)", "rgba(106, 180, 236, 1)"],
+                                            "niche":          ["rgba(85, 44, 244, 1)", "rgba(146, 28, 227, 1)"],
+                                            "industry":       ["rgba(79, 54, 36, 1)", "rgba(181, 143, 96, 1)"],
+                                        },
+                                        "round_caps":         True,
+                                        "high_contrast":      True,
+                                    },
+                                }
+
+                            },
+                            {
+                                "position": {"width": 4, "height": 4, "x": 8, "y": 0},
+                                "type": 'carbon_budget',
+                                "title": 'Carbon Budget 1',
+                                "id": 'carbon_budget_1',
+                                "parameters": {
+                                    "carbon_gauge": {
+                                        "title":                  'Emissionen seit 2020',
+                                        "unit":                   'Megatonnen',
+                                        "emissions_label":        'Kumulierte Emissionen',
+                                        "critical_label":         'Kritischer Wert',
+                                        "year_label": [
+                                            'Noch',
+                                            'Jahre'
+                                        ],
+                                        "settings": {
+                                            "colors": {
+                                                "light":          "rgba(94, 77, 50, 1)",
+                                                "dark":           "rgba(41, 21, 7, 1)"
+                                            }
+                                        }
+                                    },
+                                    "carbon_area": {
+                                        "title":                  'Jährliche CO2 Quellen',
+                                        "y_axis":                 'Megatonnen CO2',
+                                        "settings": {
+                                            "colors": [
+                                                {
+                                                    "label":          "Haushalte",
+                                                    "color":          ["rgba(106, 180, 236, 1)", "rgb(231,241,255)"],
+                                                    "capturing":      False,
+                                                }, {
+                                                    "label":          "CO2 Rückgewinnung",
+                                                    "color":          ["rgba(146, 28, 227, 1)", "rgb(201,163,227)"],
+                                                    "capturing":      True,
+                                                }, {
+                                                    "label":          "Transport",
+                                                    "color":          ["rgba(199, 70, 40, 1)", "rgb(255,236,234)"],
+                                                    "capturing":      False,
+                                                }, {
+                                                    "label":          "Industrie",
+                                                    "color":          ["rgba(167, 193, 85, 1)", "rgb(243,255,240)"],
+                                                    "capturing":      False,
+                                                }, {
+                                                    "label":          "Energy",
+                                                    "color":          ["rgba(249, 200, 52, 1)", "rgb(249,239,223)"],
+                                                    "capturing":      False,
+                                                }
+                                            ],
+                                            "lines":                  8,
+                                            "thickness":              2
+                                        }
+                                    },
+                                    "data_carbon_gauge": {
+                                        "cumulated_emissions":    0,
+                                        "critical_emissions":     1500,
+                                        "years_left":             10,
+                                        "year_speed":             5,
+                                    },
+                                    "data_carbon_area": {
+                                        "today":                  '01 Jan 2030',
+                                        "min":                    0,
+                                        "max":                    100,
+                                    },
+                                }
+                            },
+                            {
+                                "position": {"width": 6, "height": 4, "x": 0, "y": 4},
+                                "type": 'generic_rolls',
+                                "title": 'Getätigte klimarelevante Massnahmen',
+                                "id": 'generic_rolls_1',
+                                "parameters": {
+                                    "title":          "Getätigte klimarelevante Massnahmen",
+                                    "yAxis":          "Anzahl",
+                                    "min":            0,
+                                    "max":            25,
+                                    "settings": {
+                                        "politics":       ["rgba(199, 70, 40, 1)", "rgba(225, 116, 47, 1)"],
+                                        "energy":         ["rgba(249, 200, 52, 1)", "rgba(255, 248, 86, 1)"],
+                                        "investor":       ["rgba(90, 98, 100, 1)", "rgba(162, 170, 172, 1)"],
+                                        "population":     ["rgba(38, 111, 46, 1)", "rgba(167, 193, 85, 1)"],
+                                        "planer":         ["rgba(27, 73, 191, 1)", "rgba(106, 180, 236, 1)"],
+                                        "niche":          ["rgba(85, 44, 244, 1)", "rgba(146, 28, 227, 1)"],
+                                        "industry":       ["rgba(79, 54, 36, 1)", "rgba(181, 143, 96, 1)"],
+                                    }
+                                }
+                            },
+                            {
+                                "position": {"width": 6, "height": 4, "x": 6, "y": 4},
+                                "type": 'GENERIC_TIMESERIES',
+                                "title": 'Verkehrsmittel im Personenverkehr',
+                                "id": 'generic_timeseries_1',
+                                "parameters": {
+                                    "title":      "Genutzte Verkehrsmittel im Personenverkehr",
+                                    "today":      "01 Jan 2030",
+                                    "y_axis":     "Millionen Personenkilometer",
+                                    "min":      0,
+                                    "max":      200,
+                                    "settings": {
+                                        "colors": [
+                                            {
+                                                "label": "Personenwagen",
+                                                "color": "rgba(199, 70, 40, 1)"
+                                            }, {
+                                                "label": "Bus und Tram",
+                                                "color":  "rgba(27, 73, 191, 1)"
+                                            }, {
+                                                "label": "Zug",
+                                                "color":  "rgba(146, 28, 227, 1)"
+                                            }, {
+                                                "label": "Fuss und Velo",
+                                                "color":  "rgba(38, 111, 46, 1)"
+                                            }],
+                                        "lines":  9
+                                    },
+                                }
+                            },
+                            {
+                                "position": {"width": 6, "height": 12, "x": 10, "y": 4},
+                                "type": 'donut_chart',
+                                "title": 'Test',
+                                "id": 'donut_chart',
+                                "enabled": True,
+                                "toolbox": False,
+                                "parameters": [
+                                    {
+                                        "parameter": "modelA",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.PublicVehicles"
+                                    },
+                                    {
+                                        "parameter": "modelB",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.PrivateVehicles"
+                                    },
+                                    {
+                                        "parameter": "modelC",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.OtherBuildings"
+                                    },
+                                    {
+                                        "parameter": "modelD",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.ResidentialBuildings"
+                                    },
+                                    {
+                                        "parameter": "modelE",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.Industry"
+                                    },
+                                    {
+                                        "parameter": "valueA--modelA--value.3.value",
+                                        "type": "dependent",
+                                        "value": "440"
+                                    },
+                                    {
+                                        "parameter": "valueB--modelB--value.3.value",
+                                        "type": "dependent",
+                                        "value": "554"
+                                    },
+                                    {
+                                        "parameter": "valueC--modelC--value.3.value",
+                                        "type": "dependent",
+                                        "value": "552"
+                                    },
+                                    {
+                                        "parameter": "valueD--modelD--value.3.value",
+                                        "type": "dependent",
+                                        "value": "433"
+                                    },
+                                    {
+                                        "parameter": "valueE--modelE--value.3.value",
+                                        "type": "dependent",
+                                        "value": "224"
+                                    }
+                                ],
+                            },
+                            {
+                                "type": 'donut_chart_2',
+                                "title": 'Test',
+                                "id": 'donut_chart2',
+                                "parameters": [
+                                    {
+                                        "parameter": "title",
+                                        "type": "string",
+                                        "value": "Stock in Tons of Materials"
+                                    },
+                                    {
+                                        "parameter": "firstFillStyle",
+                                        "type": "string",
+                                        "value": "verticalLines"
+                                    },
+                                    {
+                                        "parameter": "secondFillStyle",
+                                        "type": "string",
+                                        "value": "squares"
+                                    },
+                                    {
+                                        "parameter": "thirdFillStyle",
+                                        "type": "string",
+                                        "value": "horizontalLines"
+                                    },
+                                    {
+                                        "parameter": "fourthFillStyle",
+                                        "type": "string",
+                                        "value": "circles"
+                                    },
+                                    {
+                                        "parameter": "fiftFillStyle",
+                                        "type": "string",
+                                        "value": "slantedLines"
+                                    },
+                                    {
+                                        "parameter": "modelA",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.PublicVehicles"
+                                    },
+                                    {
+                                        "parameter": "modelB",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.PrivateVehicles"
+                                    },
+                                    {
+                                        "parameter": "modelC",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.OtherBuildings"
+                                    },
+                                    {
+                                        "parameter": "modelD",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.ResidentialBuildings"
+                                    },
+                                    {
+                                        "parameter": "modelE",
+                                        "type": "dynamic",
+                                        "value": "aum.mfa.out.Industry"
+                                    },
+                                    {
+                                        "parameter": "valueA--modelA--value.1.value",
+                                        "type": "dependent",
+                                        "value": "24"
+                                    },
+                                    {
+                                        "parameter": "valueB--modelB--value.1.value",
+                                        "type": "dependent",
+                                        "value": "75"
+                                    },
+                                    {
+                                        "parameter": "valueC--modelC--value.1.value",
+                                        "type": "dependent",
+                                        "value": "95"
+                                    },
+                                    {
+                                        "parameter": "valueD--modelD--value.1.value",
+                                        "type": "dependent",
+                                        "value": "43"
+                                    },
+                                    {
+                                        "parameter": "valueE--modelE--value.1.value",
+                                        "type": "dependent",
+                                        "value": "42"
+                                    }
+                                ],
+                                "position": {
+                                    "width": 6,
+                                    "height": 12,
+                                    "x": 1,
+                                    "y": 14
+                                },
+                                "enabled": True,
+                                "toolbox": False
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
